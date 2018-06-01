@@ -4,7 +4,7 @@
          stopOnFailure="false"
          stderr="true">
   <testsuites>
-    <testsuite name="FuzzyMatchingOpe tests">
+    <testsuite name="FuzzyMatching tests">
       <directory>tests</directory>
     </testsuite>
   </testsuites>

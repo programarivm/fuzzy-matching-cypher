@@ -1,8 +1,8 @@
 <?php
 
-namespace FuzzyMatchingOpe\Exception;
+namespace FuzzyMatching\Exception;
 
-use FuzzyMatchingOpe\Exception;
+use FuzzyMatching\Exception;
 
 final class StringLengthException extends \UnexpectedValueException implements Exception
 {

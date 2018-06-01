@@ -1,17 +1,17 @@
 <?php
 
-namespace FuzzyMatchingOpe\Tests;
+namespace FuzzyMatching\Tests;
 
-use FuzzyMatchingOpe\FuzzyMatchingOpe;
-use FuzzyMatchingOpe\Exception\StringLengthException;
+use FuzzyMatching\FuzzyMatching;
+use FuzzyMatching\Exception\StringLengthException;
 use PHPUnit\Framework\TestCase;
 
-class FuzzyMatchingOpeTest extends TestCase
+class FuzzyMatchingTest extends TestCase
 {
 	private $fuzzyMatchingOpe;
 
 	public function __construct() {
-		$this->fuzzyMatchingOpe = new FuzzyMatchingOpe;
+		$this->fuzzyMatchingOpe = new FuzzyMatching;
 	}
 
 	/**
@@ -37,7 +37,7 @@ class FuzzyMatchingOpeTest extends TestCase
      */
 	public function equal_foo_bar_MODE_STRICT()
 	{
-		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('foo', 'bar', FuzzyMatchingOpe::MODE_STRICT));
+		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('foo', 'bar', FuzzyMatching::MODE_STRICT));
 	}
 
 	/**
@@ -53,7 +53,7 @@ class FuzzyMatchingOpeTest extends TestCase
 	 */
 	public function equal_foo_far_MODE_STRICT()
 	{
-		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('foo', 'far', FuzzyMatchingOpe::MODE_STRICT));
+		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('foo', 'far', FuzzyMatching::MODE_STRICT));
 	}
 
 	/**
@@ -69,7 +69,7 @@ class FuzzyMatchingOpeTest extends TestCase
 	 */
 	public function equal_foo_for_MODE_STRICT()
 	{
-		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('foo', 'for', FuzzyMatchingOpe::MODE_STRICT));
+		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('foo', 'for', FuzzyMatching::MODE_STRICT));
 	}
 
 	/**
@@ -85,7 +85,7 @@ class FuzzyMatchingOpeTest extends TestCase
 	 */
 	public function equal_foo_foo_MODE_STRICT()
 	{
-		$this->assertEquals(true, $this->fuzzyMatchingOpe->equal('foo', 'foo', FuzzyMatchingOpe::MODE_STRICT));
+		$this->assertEquals(true, $this->fuzzyMatchingOpe->equal('foo', 'foo', FuzzyMatching::MODE_STRICT));
 	}
 
 	/**
@@ -101,7 +101,7 @@ class FuzzyMatchingOpeTest extends TestCase
 	 */
 	public function equal_robert_susann_MODE_STRICT()
 	{
-		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('robert', 'susann', FuzzyMatchingOpe::MODE_STRICT));
+		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('robert', 'susann', FuzzyMatching::MODE_STRICT));
 	}
 
 	/**
@@ -117,7 +117,7 @@ class FuzzyMatchingOpeTest extends TestCase
 	 */
 	public function equal_robert_rusann_MODE_STRICT()
 	{
-		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('robert', 'rusann', FuzzyMatchingOpe::MODE_STRICT));
+		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('robert', 'rusann', FuzzyMatching::MODE_STRICT));
 	}
 
 	/**
@@ -133,7 +133,7 @@ class FuzzyMatchingOpeTest extends TestCase
 	 */
 	public function equal_robert_rosann_MODE_STRICT()
 	{
-		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('robert', 'rosann', FuzzyMatchingOpe::MODE_STRICT));
+		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('robert', 'rosann', FuzzyMatching::MODE_STRICT));
 	}
 
 	/**
@@ -149,7 +149,7 @@ class FuzzyMatchingOpeTest extends TestCase
 	 */
 	public function equal_robert_robann_MODE_STRICT()
 	{
-		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('robert', 'robann', FuzzyMatchingOpe::MODE_STRICT));
+		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('robert', 'robann', FuzzyMatching::MODE_STRICT));
 	}
 
 	/**
@@ -165,7 +165,7 @@ class FuzzyMatchingOpeTest extends TestCase
 	 */
 	public function equal_robert_robenn_MODE_STRICT()
 	{
-		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('robert', 'robenn', FuzzyMatchingOpe::MODE_STRICT));
+		$this->assertEquals(false, $this->fuzzyMatchingOpe->equal('robert', 'robenn', FuzzyMatching::MODE_STRICT));
 	}
 
 	/**
@@ -181,7 +181,7 @@ class FuzzyMatchingOpeTest extends TestCase
 	 */
 	public function equal_robert_robern_MODE_STRICT()
 	{
-		$this->assertEquals(true, $this->fuzzyMatchingOpe->equal('robert', 'robern', FuzzyMatchingOpe::MODE_STRICT));
+		$this->assertEquals(true, $this->fuzzyMatchingOpe->equal('robert', 'robern', FuzzyMatching::MODE_STRICT));
 	}
 
 	/**
@@ -197,7 +197,7 @@ class FuzzyMatchingOpeTest extends TestCase
 	 */
 	public function equal_robert_robert_MODE_STRICT()
 	{
-		$this->assertEquals(true, $this->fuzzyMatchingOpe->equal('robert', 'robert', FuzzyMatchingOpe::MODE_STRICT));
+		$this->assertEquals(true, $this->fuzzyMatchingOpe->equal('robert', 'robert', FuzzyMatching::MODE_STRICT));
 	}
 
 	/**

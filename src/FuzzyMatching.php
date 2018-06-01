@@ -1,10 +1,10 @@
 <?php
 
-namespace FuzzyMatchingOpe;
+namespace FuzzyMatching;
 
-use FuzzyMatchingOpe\Exception\StringLengthException;
+use FuzzyMatching\Exception\StringLengthException;
 
-class FuzzyMatchingOpe
+class FuzzyMatching
 {
 	const MAX_STRING_LENGTH = 32;
 

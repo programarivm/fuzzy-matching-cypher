@@ -1,8 +1,8 @@
 <?php
 
-namespace FuzzyMatchingOpe\Tests;
+namespace FuzzyMatching\Tests;
 
-use FuzzyMatchingOpe\LetterFrequency;
+use FuzzyMatching\LetterFrequency;
 use PHPUnit\Framework\TestCase;
 
 class LetterFrequencyTest extends TestCase
