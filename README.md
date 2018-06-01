@@ -1,9 +1,7 @@
 ## Fuzzy Matching OPE Encryption
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-<p align="center">
 ![Fuzzy Matching OPE Encryption](/resources/square-dot.jpg)
-</p>
 
 Approximate string matching with order-preserving encryption (OPE) using the [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance).
 
