@@ -12,6 +12,13 @@ class FuzzyMatching
 
 	const MODE_NORMAL = 'normal';
 
+	public function generateKey()
+	{
+		// TODO
+
+		return $key;
+	}
+
 	public function encrypt(string $phrase)
 	{
 		// TODO

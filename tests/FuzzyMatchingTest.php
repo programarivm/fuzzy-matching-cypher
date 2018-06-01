@@ -17,6 +17,16 @@ class FuzzyMatchingTest extends TestCase
 	/**
 	 * @test
 	 */
+	public function generate_key()
+	{
+		// TODO
+
+		$this->assertEquals('todo', $this->fuzzyMatchingOpe->generateKey());
+	}
+
+	/**
+	 * @test
+	 */
 	public function encrypt_foo()
 	{
 		// TODO
