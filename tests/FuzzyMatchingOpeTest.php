@@ -17,6 +17,16 @@ class FuzzyMatchingTest extends TestCase
 	/**
 	 * @test
 	 */
+	public function encrypt_foo()
+	{
+		// TODO
+
+		$this->assertEquals('todo', $this->fuzzyMatchingOpe->encrypt('foo'));
+	}
+
+	/**
+	 * @test
+	 */
 	public function equal_throws_foo_length_exception()
 	{
 		$this->expectException(StringLengthException::class);

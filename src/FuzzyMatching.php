@@ -12,6 +12,13 @@ class FuzzyMatching
 
 	const MODE_NORMAL = 'normal';
 
+	public function encrypt(string $phrase)
+	{
+		// TODO
+
+		return $phrase;
+	}
+
 	public function equal(string $str1, string $str2, string $mode = self::MODE_NORMAL)
 	{
 		if (strlen($str1) > self::MAX_STRING_LENGTH) {
