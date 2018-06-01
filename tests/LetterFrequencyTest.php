@@ -8,8 +8,8 @@ use PHPUnit\Framework\TestCase;
 class LetterFrequencyTest extends TestCase
 {
 	/**
-     * @test
-     */
+	 * @test
+	 */
 	public function en()
 	{
 		$en = LetterFrequency::en();
