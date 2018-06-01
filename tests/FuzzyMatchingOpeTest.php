@@ -1,6 +1,6 @@
 <?php
 
-	namespace FuzzyMatchingOpe\Tests;
+namespace FuzzyMatchingOpe\Tests;
 
 use FuzzyMatchingOpe\FuzzyMatchingOpe;
 use FuzzyMatchingOpe\Exception\StringLengthException;
