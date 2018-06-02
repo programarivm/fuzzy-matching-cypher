@@ -13,9 +13,9 @@ class LetterFrequencyTest extends TestCase
 	 */
 	public function en()
 	{
-		$letterFreq = new LetterFrequency(Language::EN);
+		$letterFreq = (new LetterFrequency(Language::EN))->get();
 
-		$this->assertEquals(12.02, $letterFreq->get()['e']);
-		$this->assertEquals(9.10, $letterFreq->get()['t']);
+		$this->assertEquals(12.02, $letterFreq['e']);
+		$this->assertEquals(9.10, $letterFreq['t']);
 	}
 }
