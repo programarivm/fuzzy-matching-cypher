@@ -4,7 +4,7 @@ namespace FuzzyMatching;
 
 use FuzzyMatching\Lang;
 
-class LetterFrequency
+class LetterFreq
 {
 	private $lang;
 
