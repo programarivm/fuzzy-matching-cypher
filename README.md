@@ -7,13 +7,11 @@ Approximate string matching with order-preserving encryption (OPE) using the [Le
 
 ### 1. Install
 
-Via composer:
-
-    $ composer require programarivm/fuzzy-matching-ope-encryption
+> TODO: Submit to packagist when finished
 
 ### 2. Instantiation
 
-TODO ...
+> TODO ...
 
 ### 3. License
 
