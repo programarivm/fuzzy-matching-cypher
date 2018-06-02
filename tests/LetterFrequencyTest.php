@@ -2,7 +2,7 @@
 
 namespace FuzzyMatching\Tests;
 
-use FuzzyMatching\Language;
+use FuzzyMatching\Lang;
 use FuzzyMatching\LetterFrequency;
 use PHPUnit\Framework\TestCase;
 
@@ -13,7 +13,7 @@ class LetterFrequencyTest extends TestCase
 	 */
 	public function en()
 	{
-		$letterFreq = (new LetterFrequency(Language::EN))->get();
+		$letterFreq = (new LetterFrequency(Lang::EN))->get();
 
 		$this->assertEquals(12.02, $letterFreq['e']);
 		$this->assertEquals(9.10, $letterFreq['t']);

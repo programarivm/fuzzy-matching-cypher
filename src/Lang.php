@@ -2,7 +2,7 @@
 
 namespace FuzzyMatching;
 
-class Language
+class Lang
 {
 	const EN = 'en';
 }

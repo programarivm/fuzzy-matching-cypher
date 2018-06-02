@@ -2,7 +2,7 @@
 
 namespace FuzzyMatching;
 
-use FuzzyMatching\Language;
+use FuzzyMatching\Lang;
 
 class LetterFrequency
 {
@@ -14,7 +14,7 @@ class LetterFrequency
 
 	public function get() {
 		switch ($this->lang) {
-			case Language::EN:
+			case Lang::EN:
 				return [
 					'e' => 12.02,
 					't' => 9.10,

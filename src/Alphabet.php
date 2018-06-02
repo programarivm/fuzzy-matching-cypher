@@ -2,7 +2,7 @@
 
 namespace FuzzyMatching;
 
-use FuzzyMatching\Language;
+use FuzzyMatching\Lang;
 use FuzzyMatching\LetterFrequency;
 
 class Alphabet
@@ -16,7 +16,7 @@ class Alphabet
 	}
 
 	public function get() {
-		$letterFreq = (new LetterFrequency(Language::EN))->get();
+		$letterFreq = (new LetterFrequency(Lang::EN))->get();
 
 		foreach ($letterFreq as $key => $val) {
 			$this->alphabet[$key] = [
