@@ -2,8 +2,8 @@
 
 namespace FuzzyMatching\Tests;
 
-use FuzzyMatching\Alphabet\English;
-use FuzzyMatching\Alphabet\Mimicked;
+use FuzzyMatching\Alphabet\EnglishAlphabet;
+use FuzzyMatching\Alphabet\MimickedAlphabet;
 use UnicodeRanges\Range\AlchemicalSymbols;
 use UnicodeRanges\Range\Ethiopic;
 use UnicodeRanges\Range\GreekAndCoptic;
@@ -20,7 +20,7 @@ class MimickedAlphabetTest extends TestCase
 	 */
 	public function letter_freq()
 	{
-		$english = new English;
+		$english = new EnglishAlphabet;
 		$unicodeRanges = [
 			new AlchemicalSymbols,
 			new Ethiopic,
@@ -30,7 +30,7 @@ class MimickedAlphabetTest extends TestCase
 			new Hiragana,
 			new Ugaritic,
 		];
-		$mimickedEnglish = (new Mimicked($english, $unicodeRanges))->letterFreq();
+		$mimickedEnglish = (new MimickedAlphabet($english, $unicodeRanges))->getLetterFreq();
 
 		$this->assertEquals(12.02, $mimickedEnglish['e']['freq']);
 		$this->assertEquals(9.10, $mimickedEnglish['t']['freq']);

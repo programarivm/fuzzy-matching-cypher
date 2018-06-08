@@ -2,17 +2,17 @@
 
 namespace FuzzyMatching\Tests\Alphabet;
 
-use FuzzyMatching\Alphabet\English;
+use FuzzyMatching\Alphabet\EnglishAlphabet;
 use PHPUnit\Framework\TestCase;
 
-class EnglishTest extends TestCase
+class EnglishAlphabetTest extends TestCase
 {
 	/**
 	 * @test
 	 */
 	public function en()
 	{
-		$letterFreq = (new English)->letterFreq();
+		$letterFreq = (new EnglishAlphabet)->getLetterFreq();
 
 		$this->assertEquals(12.02, $letterFreq['e']);
 		$this->assertEquals(9.10, $letterFreq['t']);

@@ -6,7 +6,7 @@ class AlphabetAbstract
 {
 	protected $letterFreq;
 
-	public function letterFreq() {
+	public function getLetterFreq() {
 		return $this->letterFreq;
 	}
 }
