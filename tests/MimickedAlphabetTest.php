@@ -2,18 +2,18 @@
 
 namespace FuzzyMatching\Tests;
 
-use FuzzyMatching\Alphabet;
+use FuzzyMatching\MimickedAlphabet;
 use FuzzyMatching\Lang;
 use PHPUnit\Framework\TestCase;
 
-class AlphabetTest extends TestCase
+class MimickedAlphabetTest extends TestCase
 {
 	/**
 	 * @test
 	 */
 	public function get()
 	{
-		$alphabet = (new Alphabet(Lang::EN))->get();
+		$alphabet = (new MimickedAlphabet(Lang::EN))->get();
 
 		$this->assertEquals(12.02, $alphabet['e']['freq']);
 	}

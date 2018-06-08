@@ -5,7 +5,7 @@ namespace FuzzyMatching;
 use FuzzyMatching\Lang;
 use FuzzyMatching\LetterFreq;
 
-class Alphabet
+class MimickedAlphabet
 {
 	private $lang;
 
