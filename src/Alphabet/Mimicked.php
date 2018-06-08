@@ -2,14 +2,8 @@
 
 namespace FuzzyMatching\Alphabet;
 
+use FuzzyMatching\Alphabet\AlphabetAbstract;
 use UnicodeRanges\Randomizer;
-use UnicodeRanges\Range\AlchemicalSymbols;
-use UnicodeRanges\Range\Ethiopic;
-use UnicodeRanges\Range\GreekAndCoptic;
-use UnicodeRanges\Range\HangulJamo;
-use UnicodeRanges\Range\Hanunoo;
-use UnicodeRanges\Range\Hiragana;
-use UnicodeRanges\Range\Ugaritic;
 
 class Mimicked
 {
@@ -19,17 +13,9 @@ class Mimicked
 
 	private $letterFreq = [];
 
-	public function __construct($alphabet) {
+	public function __construct(AlphabetAbstract $alphabet, array $unicodeRanges) {
 		$this->alphabet = $alphabet;
-		$this->unicodeRanges = [
-			new AlchemicalSymbols,
-			new Ethiopic,
-			new GreekAndCoptic,
-			new HangulJamo,
-			new Hanunoo,
-			new Hiragana,
-			new Ugaritic,
-		];
+		$this->unicodeRanges = $unicodeRanges;
 	}
 
 	public function letterFreq() {

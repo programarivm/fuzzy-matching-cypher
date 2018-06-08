@@ -30,5 +30,10 @@
     "psr-4": {
       "FuzzyMatching\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "FuzzyMatching\\Tests\\": "tests/"
+    }
   }
 }
