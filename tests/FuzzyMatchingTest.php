@@ -3,8 +3,13 @@
 namespace FuzzyMatching\Tests;
 
 use FuzzyMatching\FuzzyMatching;
+use FuzzyMatching\Alphabet\English;
+use FuzzyMatching\Alphabet\Mimicked;
 use FuzzyMatching\Exception\StringLengthException;
 use PHPUnit\Framework\TestCase;
+use UnicodeRanges\Range\AlchemicalSymbols;
+use UnicodeRanges\Range\Oriya;
+use UnicodeRanges\Range\PhaistosDisc;
 
 class FuzzyMatchingTest extends TestCase
 {
@@ -31,7 +36,20 @@ class FuzzyMatchingTest extends TestCase
 	{
 		// TODO
 
-		$this->assertEquals('todo', $this->fuzzyMatching->encrypt('foo'));
+		$english = new English;
+
+		$foregroundAlphabet = new Mimicked($english, [
+			new AlchemicalSymbols
+		]);
+
+		$backgroundAlphabet = new Mimicked($english, [
+			new Oriya,
+			new PhaistosDisc,
+		]);
+
+		$cipher = $this->fuzzyMatching->encrypt('foobar', $foregroundAlphabet, $backgroundAlphabet);
+
+		$this->assertEquals('todo', $cipher);
 	}
 
 	/**

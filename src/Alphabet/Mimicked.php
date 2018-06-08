@@ -2,10 +2,11 @@
 
 namespace FuzzyMatching\Alphabet;
 
+use FuzzyMatching\Alphabet;
 use FuzzyMatching\Alphabet\AlphabetAbstract;
 use UnicodeRanges\Randomizer;
 
-class Mimicked
+class Mimicked implements Alphabet
 {
 	private $alphabet;
 
@@ -13,7 +14,7 @@ class Mimicked
 
 	private $letterFreq = [];
 
-	public function __construct(AlphabetAbstract $alphabet, array $unicodeRanges) {
+	public function __construct(Alphabet $alphabet, array $unicodeRanges) {
 		$this->alphabet = $alphabet;
 		$this->unicodeRanges = $unicodeRanges;
 	}

@@ -19,11 +19,17 @@ class FuzzyMatching
 		return $key;
 	}
 
-	public function encrypt(string $phrase)
+	public function encrypt(string $phrase, Alphabet $foregroundAlphabet, Alphabet $backgroundAlphabet)
 	{
-		// TODO
+		$cipher = '';
+		$chars = str_split($phrase);
+		foreach ($chars as $char) {
+			$cipher .= $foregroundAlphabet->letterFreq()[$char]['char'];
+		}
 
-		return $phrase;
+		// TODO: add background alphabet letters
+
+		return $cipher;
 	}
 
 	public function equal(string $str1, string $str2, string $mode = self::MODE_NORMAL)
