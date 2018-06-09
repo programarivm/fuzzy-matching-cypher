@@ -2,10 +2,13 @@
 
 namespace FuzzyMatching;
 
-use FuzzyMatching\Matcher;
+use FuzzyMatching\Match;
+use FuzzyMatching\Exception\CryptException;
 
 class Crypt
 {
+	const MAX_STRING_LENGTH = 32;
+
 	private $foregroundAlphabet;
 
 	private $backgroundAlphabet;
@@ -16,10 +19,14 @@ class Crypt
 		$this->backgroundAlphabet = $backgroundAlphabet;
 	}
 
-	public function encrypt(string $phrase)
+	public function encrypt(string $str)
 	{
+		if (mb_strlen($str) > self::MAX_STRING_LENGTH) {
+			throw new CryptException(self::MAX_STRING_LENGTH);
+		}
+
 		$cipher = '';
-		$chars = str_split($phrase);
+		$chars = str_split($str);
 		foreach ($chars as $char) {
 			$cipher .= $this->foregroundAlphabet->getLetterFreq()[$char]['char'];
 		}
@@ -30,7 +37,7 @@ class Crypt
 	private function fillBackground(string $cipher)
 	{
 		$background = '';
-		$nChars = Matcher::MAX_ENCRYPTED_STRING_LENGTH - mb_strlen($cipher);
+		$nChars = Match::MAX_STRING_LENGTH - mb_strlen($cipher);
 		for ($i = 1; $i <= $nChars; $i++) {
 			$background .= $this->backgroundAlphabet->randLetter();
 		}

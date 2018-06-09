@@ -3,16 +3,16 @@
 namespace FuzzyMatching\Tests;
 
 use FuzzyMatching\Crypt;
-use FuzzyMatching\Matcher;
+use FuzzyMatching\Match;
 use FuzzyMatching\Alphabet\EnglishAlphabet;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
-use FuzzyMatching\Exception\MatcherException;
+use FuzzyMatching\Exception\MatchException;
 use UnicodeRanges\Range\AlchemicalSymbols;
 use UnicodeRanges\Range\Ethiopic;
 use UnicodeRanges\Range\HangulJamo;
 use PHPUnit\Framework\TestCase;
 
-class MatcherTest extends TestCase
+class MatchTest extends TestCase
 {
 	private $foregroundAlphabet;
 
@@ -37,7 +37,7 @@ class MatcherTest extends TestCase
 			]
 		);
 
-		$this->matcher = new Matcher($this->foregroundAlphabet, $this->backgroundAlphabet);
+		$this->matcher = new Match($this->foregroundAlphabet, $this->backgroundAlphabet);
 		$this->crypt = new Crypt($this->foregroundAlphabet, $this->backgroundAlphabet);
 	}
 
@@ -46,7 +46,7 @@ class MatcherTest extends TestCase
 	 */
 	public function similarity_throws_foo_exception()
 	{
-		$this->expectException(MatcherException::class);
+		$this->expectException(MatchException::class);
 		$this->assertEquals(false, $this->matcher->similarity(
 			'foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo',
 			'bar'
@@ -58,7 +58,7 @@ class MatcherTest extends TestCase
 	 */
 	public function similarity_throws_bar_exception()
 	{
-		$this->expectException(MatcherException::class);
+		$this->expectException(MatchException::class);
 		$this->assertEquals(false, $this->matcher->similarity(
 			'foo',
 			'baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaar'
@@ -70,7 +70,7 @@ class MatcherTest extends TestCase
 	 */
 	public function encrypted_similarity_throws_exception()
 	{
-		$this->expectException(MatcherException::class);
+		$this->expectException(MatchException::class);
 		$foo = '🜁🝃🝃🝀🜿🝥🜎🝑🝪🝋🜤🜪🝳🝠🝋🝦🝆🝭🝦🝝🜘🝝🝡🜌🝦🝯🜤🜍🝯🜅🜎🜹🜹🝝🜅🜗🜋🜎🝠🝝🝑🝝🝆🜤🝉🝭🜬🝡🝯🝋🝭🜀🜬🜪🜌🜲🝆🜹🜌🜎🝯🜘🜗🝯🜋🜋🝂🜬🝆🜲🜹🜘🝝🝳🜌🝡🝭🜹🜌🜹';
 		$bar = '🝌🜃🜃🝕🝁🜘🜌🜎🝤🝍🜎🜌🜆🜍🝠🝠🜌🜎🝠🝇🜴🜎🝳🜆🝄🜴🜴🝟🝦🝡🜴🜔🜴🝄🝡🝄🝧🜴🜺🝦🜴🝄🜣🝇🝧🜴🝩🝟🝠🝤🝄🜥🜌🝦🝬🜥🜺🝇🝩🜼🜣🜌🝧🝤';
 		$this->matcher->similarity($foo, $bar);

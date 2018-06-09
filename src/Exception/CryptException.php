@@ -4,10 +4,10 @@ namespace FuzzyMatching\Exception;
 
 use FuzzyMatching\Exception;
 
-final class MatcherException extends \UnexpectedValueException implements Exception
+final class CryptException extends \UnexpectedValueException implements Exception
 {
     private $limit;
-    
+
     protected $message;
 
     public function __construct(int $limit) {

@@ -2,17 +2,11 @@
 
 namespace FuzzyMatching;
 
-use FuzzyMatching\Exception\MatcherException;
+use FuzzyMatching\Exception\MatchException;
 
-class Matcher
+class Match
 {
-	const MAX_ENCRYPTED_STRING_LENGTH = 64;
-
-	const MAX_STRING_LENGTH = 32;
-
-	const MODE_STRICT = 'strict';
-
-	const MODE_NORMAL = 'normal';
+	const MAX_STRING_LENGTH = 64;
 
 	private $foregroundAlphabet;
 
@@ -26,10 +20,10 @@ class Matcher
 
 	public function similarity($str1, $str2)
 	{
-		if (mb_strlen($str1) > self::MAX_ENCRYPTED_STRING_LENGTH) {
-			throw new MatcherException(self::MAX_ENCRYPTED_STRING_LENGTH);
-		} elseif (mb_strlen($str2) > self::MAX_ENCRYPTED_STRING_LENGTH) {
-			throw new MatcherException(self::MAX_ENCRYPTED_STRING_LENGTH);
+		if (mb_strlen($str1) > self::MAX_STRING_LENGTH) {
+			throw new MatchException(self::MAX_STRING_LENGTH);
+		} elseif (mb_strlen($str2) > self::MAX_STRING_LENGTH) {
+			throw new MatchException(self::MAX_STRING_LENGTH);
 		}
 
 		// remove the chars of the background alphabet
