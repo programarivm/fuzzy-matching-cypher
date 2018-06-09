@@ -3,6 +3,7 @@
 namespace FuzzyMatching\Alphabet;
 
 use FuzzyMatching\Alphabet;
+use FuzzyMatching\Exception\MimickedAlphabetException;
 use UnicodeRanges\Randomizer;
 
 class MimickedAlphabet implements Alphabet
@@ -17,6 +18,12 @@ class MimickedAlphabet implements Alphabet
 
     public function __construct(Alphabet $sourceAlphabet, array $unicodeRanges, array $excludedLetters = [])
     {
+        if (($this->availableChars($unicodeRanges) - count($excludedLetters)) < count($sourceAlphabet->getLetterFreq())) {
+            throw new MimickedAlphabetException(
+                'Whoops! The are not enough Unicode characters left to mimic the source alphabet.'
+            );
+        }
+
         $this->sourceAlphabet = $sourceAlphabet;
         $this->unicodeRanges = $unicodeRanges;
         $this->excludedLetters = $excludedLetters;
@@ -59,5 +66,18 @@ class MimickedAlphabet implements Alphabet
         );
 
         return array_values($letters);
+    }
+
+    private function availableChars($unicodeRanges) {
+        $availableChars = 0;
+        foreach ($unicodeRanges as $unicodeRange) {
+            foreach ($unicodeRange->chars() as $char) {
+                if (preg_match('/(\p{L}|\p{N}|\p{P}|\p{S})/u', $char)) {
+                    $availableChars += 1;
+                }
+            }
+        }
+
+        return $availableChars;
     }
 }

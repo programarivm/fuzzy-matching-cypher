@@ -13,12 +13,6 @@ use UnicodeRanges\Range\PhaistosDisc;
 
 class CryptTest extends TestCase
 {
-	private $crypt;
-
-	public function __construct() {
-		$this->crypt = new Crypt;
-	}
-
 	/**
 	 * @test
 	 */
@@ -38,7 +32,9 @@ class CryptTest extends TestCase
 			$excludedLetters
 		);
 
-		$cipher = $this->crypt->encrypt('foobar', $foregroundAlphabet, $backgroundAlphabet);
+		$crypt = new Crypt($foregroundAlphabet, $backgroundAlphabet);
+
+		$cipher = $crypt->encrypt('foobar', $foregroundAlphabet, $backgroundAlphabet);
 
 		$this->assertTrue(false); // TODO
 	}

@@ -4,6 +4,7 @@ namespace FuzzyMatching\Tests;
 
 use FuzzyMatching\Alphabet\EnglishAlphabet;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
+use FuzzyMatching\Exception\MimickedAlphabetException;
 use UnicodeRanges\Range\AlchemicalSymbols;
 use UnicodeRanges\Range\Ethiopic;
 use UnicodeRanges\Range\GreekAndCoptic;
@@ -58,5 +59,71 @@ class MimickedAlphabetTest extends TestCase
 		$this->assertEquals(0.11, $mimickedEnglish['q']['freq']);
 		$this->assertEquals(0.10, $mimickedEnglish['j']['freq']);
 		$this->assertEquals(0.07, $mimickedEnglish['z']['freq']);
+	}
+
+	/**
+	 * @test
+	 */
+	public function disjoint_letters_English_AlchemicalSymbols()
+	{
+		$english = new EnglishAlphabet;
+
+		$foregroundAlphabet = new MimickedAlphabet($english, [
+			new AlchemicalSymbols
+		]);
+
+		$excludedLetters = $foregroundAlphabet->letters();
+
+		$backgroundAlphabet = new MimickedAlphabet(
+			$english,
+			$foregroundAlphabet->getUnicodeRanges(),
+			$excludedLetters
+		);
+
+		$this->assertEquals([], array_intersect($excludedLetters, $backgroundAlphabet->letters()));
+	}
+
+	/**
+	 * @test
+	 */
+	public function disjoint_letters_English_Ethiopic()
+	{
+		$english = new EnglishAlphabet;
+
+		$foregroundAlphabet = new MimickedAlphabet($english, [
+			new Ethiopic
+		]);
+
+		$excludedLetters = $foregroundAlphabet->letters();
+
+		$backgroundAlphabet = new MimickedAlphabet(
+			$english,
+			$foregroundAlphabet->getUnicodeRanges(),
+			$excludedLetters
+		);
+
+		$this->assertEquals([], array_intersect($excludedLetters, $backgroundAlphabet->letters()));
+	}
+
+	/**
+	 * @test
+	 */
+	public function disjoint_letters_English_Ugaritic()
+	{
+        $this->expectException(MimickedAlphabetException::class);
+
+		$english = new EnglishAlphabet;
+
+		$foregroundAlphabet = new MimickedAlphabet($english, [
+			new Ugaritic
+		]);
+
+		$excludedLetters = $foregroundAlphabet->letters();
+
+		$backgroundAlphabet = new MimickedAlphabet(
+			$english,
+			$foregroundAlphabet->getUnicodeRanges(),
+			$excludedLetters
+		);
 	}
 }
