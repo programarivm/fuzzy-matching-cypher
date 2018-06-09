@@ -7,13 +7,14 @@ use FuzzyMatching\Alphabet\EnglishAlphabet;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
 use PHPUnit\Framework\TestCase;
 use UnicodeRanges\Range\AlchemicalSymbols;
+use UnicodeRanges\Range\Ethiopic;
 
 class CryptTest extends TestCase
 {
 	/**
 	 * @test
 	 */
-	public function encrypt_foobar()
+	public function encrypt_foobar_not_disjoint_alphabets()
 	{
 		$foregroundAlphabet = new MimickedAlphabet(
 			new EnglishAlphabet, [
@@ -27,6 +28,30 @@ class CryptTest extends TestCase
 			new EnglishAlphabet,
 			$foregroundAlphabet->getUnicodeRanges(),
 			$excludedLetters
+		);
+
+		$crypt = new Crypt($foregroundAlphabet, $backgroundAlphabet);
+
+		$cipher = $crypt->encrypt('foobar', $foregroundAlphabet, $backgroundAlphabet);
+
+		$this->assertEquals(64, mb_strlen($cipher));
+	}
+
+	/**
+	 * @test
+	 */
+	public function encrypt_foobar_disjoint_alphabets()
+	{
+		$foregroundAlphabet = new MimickedAlphabet(
+			new EnglishAlphabet, [
+				new AlchemicalSymbols
+			]
+		);
+
+		$backgroundAlphabet = new MimickedAlphabet(
+			new EnglishAlphabet, [
+				new Ethiopic
+			]
 		);
 
 		$crypt = new Crypt($foregroundAlphabet, $backgroundAlphabet);

@@ -15,16 +15,25 @@ class Matcher
 
 	const MODE_NORMAL = 'normal';
 
+	private $foregroundAlphabet;
+
+	private $backgroundAlphabet;
+
+	public function __construct(Alphabet $foregroundAlphabet, Alphabet $backgroundAlphabet)
+	{
+		$this->foregroundAlphabet = $foregroundAlphabet;
+		$this->backgroundAlphabet = $backgroundAlphabet;
+	}
+
 	public function match(string $str1, string $str2, string $mode = self::MODE_NORMAL)
 	{
-		if (strlen($str1) > self::MAX_STRING_LENGTH) {
+		if (mb_strlen($str1) > self::MAX_STRING_LENGTH) {
 			throw new StringLengthException(self::MAX_STRING_LENGTH);
-		}
-		if (strlen($str2) > self::MAX_STRING_LENGTH) {
+		} elseif (mb_strlen($str2) > self::MAX_STRING_LENGTH) {
 			throw new StringLengthException(self::MAX_STRING_LENGTH);
 		}
 
-		$minLength = min(strlen($str1), strlen($str2));
+		$minLength = min(mb_strlen($str1), mb_strlen($str2));
 		$levenshtein = levenshtein($str1, $str2);
 
 		switch ($mode) {
@@ -37,15 +46,25 @@ class Matcher
 
 	public function encryptedMatch(string $str1, string $str2, string $mode = self::MODE_NORMAL)
 	{
-		if (strlen($str1) > self::MAX_ENCRYPTED_STRING_LENGTH) {
+		if (mb_strlen($str1) > self::MAX_ENCRYPTED_STRING_LENGTH) {
 			throw new EncryptedStringLengthException(self::MAX_ENCRYPTED_STRING_LENGTH);
-		}
-		if (strlen($str2) > self::MAX_ENCRYPTED_STRING_LENGTH) {
+		} elseif (mb_strlen($str2) > self::MAX_ENCRYPTED_STRING_LENGTH) {
 			throw new EncryptedStringLengthException(self::MAX_ENCRYPTED_STRING_LENGTH);
 		}
 
-		// TODO
+		$backgroundAlphabetLetters = implode('', $this->backgroundAlphabet->letters());
 
-		return false;
+		$str1 = preg_replace("/[$backgroundAlphabetLetters]/u", '', $str1);
+		$str2 = preg_replace("/[$backgroundAlphabetLetters]/u", '', $str2);
+
+		$minLength = min(mb_strlen($str1), mb_strlen($str2));
+		$levenshtein = levenshtein($str1, $str2);
+
+		switch ($mode) {
+			case self::MODE_STRICT:
+				return $levenshtein < ceil($minLength / 4);
+			default:
+				return $levenshtein < ceil($minLength / 2);
+		}
 	}
 }
