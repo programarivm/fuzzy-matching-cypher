@@ -12,6 +12,6 @@ final class EncryptedStringLengthException extends \UnexpectedValueException imp
 
     public function __construct(int $limit) {
         $this->limit = $limit;
-        $this->message = "The encrypted string exceeded de limit of $this->limit characters.";
+        $this->message = "The encrypted string exceeded the limit of $this->limit characters.";
     }
 }

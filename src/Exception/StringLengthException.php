@@ -12,6 +12,6 @@ final class StringLengthException extends \UnexpectedValueException implements E
 
     public function __construct(int $limit) {
         $this->limit = $limit;
-        $this->message = "The string exceeded de limit of $this->limit characters.";
+        $this->message = "The string exceeded the limit of $this->limit characters.";
     }
 }
