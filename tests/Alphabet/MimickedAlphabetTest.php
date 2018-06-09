@@ -72,16 +72,14 @@ class MimickedAlphabetTest extends TestCase
 	 */
 	public function disjoint_letters_English_AlchemicalSymbols()
 	{
-		$foregroundAlphabet = new MimickedAlphabet($this->alphabet,
-			[
+		$foregroundAlphabet = new MimickedAlphabet($this->alphabet, [
 				new AlchemicalSymbols,
 			]
 		);
 
 		$excludedLetters = $foregroundAlphabet->letters();
 
-		$backgroundAlphabet = new MimickedAlphabet($this->alphabet,
-			[
+		$backgroundAlphabet = new MimickedAlphabet($this->alphabet, [
 				new AlchemicalSymbols,
 			],
 			$excludedLetters
@@ -95,16 +93,14 @@ class MimickedAlphabetTest extends TestCase
 	 */
 	public function disjoint_letters_English_Ethiopic()
 	{
-		$foregroundAlphabet = new MimickedAlphabet($this->alphabet,
-			[
+		$foregroundAlphabet = new MimickedAlphabet($this->alphabet, [
 				new Ethiopic,
 			]
 		);
 
 		$excludedLetters = $foregroundAlphabet->letters();
 
-		$backgroundAlphabet = new MimickedAlphabet($this->alphabet,
-			[
+		$backgroundAlphabet = new MimickedAlphabet($this->alphabet, [
 				new Ethiopic,
 			],
 			$excludedLetters
@@ -120,14 +116,12 @@ class MimickedAlphabetTest extends TestCase
 	{
         $this->expectException(MimickedAlphabetException::class);
 
-		$foregroundAlphabet = new MimickedAlphabet($this->alphabet,
-			[
+		$foregroundAlphabet = new MimickedAlphabet($this->alphabet,	[
 				new Ugaritic,
 			]
 		);
 
-		$backgroundAlphabet = new MimickedAlphabet($this->alphabet,
-			[
+		$backgroundAlphabet = new MimickedAlphabet($this->alphabet,	[
 				new Ugaritic,
 			],
 			$foregroundAlphabet->letters()
