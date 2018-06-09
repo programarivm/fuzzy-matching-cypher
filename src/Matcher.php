@@ -4,7 +4,7 @@ namespace FuzzyMatching;
 
 use FuzzyMatching\Exception\StringLengthException;
 
-class FuzzyMatching
+class Matcher
 {
 	const MAX_STRING_LENGTH = 32;
 
@@ -12,7 +12,7 @@ class FuzzyMatching
 
 	const MODE_NORMAL = 'normal';
 
-	public function equal(string $str1, string $str2, string $mode = self::MODE_NORMAL)
+	public function match(string $str1, string $str2, string $mode = self::MODE_NORMAL)
 	{
 		if (strlen($str1) > self::MAX_STRING_LENGTH) {
 			throw new StringLengthException(self::MAX_STRING_LENGTH);

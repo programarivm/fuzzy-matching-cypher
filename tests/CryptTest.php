@@ -5,11 +5,8 @@ namespace FuzzyMatching\Tests;
 use FuzzyMatching\Crypt;
 use FuzzyMatching\Alphabet\EnglishAlphabet;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
-use FuzzyMatching\Exception\StringLengthException;
 use PHPUnit\Framework\TestCase;
 use UnicodeRanges\Range\AlchemicalSymbols;
-use UnicodeRanges\Range\Oriya;
-use UnicodeRanges\Range\PhaistosDisc;
 
 class CryptTest extends TestCase
 {
@@ -36,6 +33,6 @@ class CryptTest extends TestCase
 
 		$cipher = $crypt->encrypt('foobar', $foregroundAlphabet, $backgroundAlphabet);
 
-		$this->assertTrue(false); // TODO
+		$this->assertEquals(64, mb_strlen($cipher));
 	}
 }

@@ -3,18 +3,17 @@
 namespace FuzzyMatching\Alphabet;
 
 use FuzzyMatching\Alphabet;
+use FuzzyMatching\Alphabet\AlphabetAbstract;
 use FuzzyMatching\Exception\MimickedAlphabetException;
 use UnicodeRanges\Randomizer;
 
-class MimickedAlphabet implements Alphabet
+class MimickedAlphabet extends AlphabetAbstract implements Alphabet
 {
     private $sourceAlphabet;
 
     private $unicodeRanges;
 
     private $excludedLetters;
-
-    private $letterFreq = [];
 
     public function __construct(Alphabet $sourceAlphabet, array $unicodeRanges, array $excludedLetters = [])
     {
@@ -54,18 +53,6 @@ class MimickedAlphabet implements Alphabet
         $letters = $this->letters();
 
         return mb_stripos(implode('', $letters), $letter) !== false;
-    }
-
-    public function letters()
-    {
-        $letters = array_map(
-            function ($char) {
-                return $char['char'];
-            },
-            $this->letterFreq
-        );
-
-        return array_values($letters);
     }
 
     private function availableChars($unicodeRanges) {
