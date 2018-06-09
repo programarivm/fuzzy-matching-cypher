@@ -6,6 +6,8 @@ use FuzzyMatching\Exception\StringLengthException;
 
 class Matcher
 {
+	const MAX_ENCRYPTED_STRING_LENGTH = 64;
+
 	const MAX_STRING_LENGTH = 32;
 
 	const MODE_STRICT = 'strict';
@@ -30,5 +32,12 @@ class Matcher
 			default:
 				return $levenshtein < ceil($minLength / 2);
 		}
+	}
+
+	public function encryptedMatch(string $str1, string $str2, string $mode = self::MODE_NORMAL)
+	{
+		// TODO
+
+		return false;
 	}
 }

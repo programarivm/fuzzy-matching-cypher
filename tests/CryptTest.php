@@ -15,16 +15,16 @@ class CryptTest extends TestCase
 	 */
 	public function encrypt_foobar()
 	{
-		$english = new EnglishAlphabet;
-
-		$foregroundAlphabet = new MimickedAlphabet($english, [
-			new AlchemicalSymbols
-		]);
+		$foregroundAlphabet = new MimickedAlphabet(
+			new EnglishAlphabet, [
+				new AlchemicalSymbols
+			]
+		);
 
 		$excludedLetters = $foregroundAlphabet->letters();
 
 		$backgroundAlphabet = new MimickedAlphabet(
-			$english,
+			new EnglishAlphabet,
 			$foregroundAlphabet->getUnicodeRanges(),
 			$excludedLetters
 		);

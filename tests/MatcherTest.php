@@ -2,16 +2,40 @@
 
 namespace FuzzyMatching\Tests;
 
+use FuzzyMatching\Crypt;
 use FuzzyMatching\Matcher;
+use FuzzyMatching\Alphabet\EnglishAlphabet;
+use FuzzyMatching\Alphabet\MimickedAlphabet;
+use FuzzyMatching\Exception\MimickedAlphabetException;
 use FuzzyMatching\Exception\StringLengthException;
+use UnicodeRanges\Range\AlchemicalSymbols;
 use PHPUnit\Framework\TestCase;
 
 class MatcherTest extends TestCase
 {
 	private $matcher;
 
+	private $crypt;
+
 	public function __construct() {
+
 		$this->matcher = new Matcher;
+
+		$foregroundAlphabet = new MimickedAlphabet(
+			new EnglishAlphabet, [
+				new AlchemicalSymbols
+			]
+		);
+
+		$excludedLetters = $foregroundAlphabet->letters();
+
+		$backgroundAlphabet = new MimickedAlphabet(
+			new EnglishAlphabet,
+			$foregroundAlphabet->getUnicodeRanges(),
+			$excludedLetters
+		);
+
+		$this->crypt = new Crypt($foregroundAlphabet, $backgroundAlphabet);
 	}
 
 	/**
@@ -38,6 +62,17 @@ class MatcherTest extends TestCase
 	public function match_foo_bar_MODE_STRICT()
 	{
 		$this->assertEquals(false, $this->matcher->match('foo', 'bar', Matcher::MODE_STRICT));
+	}
+
+	/**
+	 * @test
+	 */
+	public function match_foo_bar_MODE_STRICT_encrypted()
+	{
+		$foo = $this->crypt->encrypt('foo');
+		$bar = $this->crypt->encrypt('bar');
+
+		$this->assertEquals(true, $this->matcher->encryptedMatch($foo, $bar, Matcher::MODE_STRICT));
 	}
 
 	/**

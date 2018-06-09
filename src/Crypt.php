@@ -6,8 +6,6 @@ use FuzzyMatching\Matcher;
 
 class Crypt
 {
-	const TOKEN_LENGTH = 64;
-
 	private $foregroundAlphabet;
 
 	private $backgroundAlphabet;
@@ -32,7 +30,7 @@ class Crypt
 	private function fillBackground(string $cipher)
 	{
 		$background = '';
-		$nChars = self::TOKEN_LENGTH - mb_strlen($cipher);
+		$nChars = Matcher::MAX_ENCRYPTED_STRING_LENGTH - mb_strlen($cipher);
 		for ($i = 1; $i <= $nChars; $i++) {
 			$background .= $this->backgroundAlphabet->randLetter();
 		}
