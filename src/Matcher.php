@@ -3,6 +3,7 @@
 namespace FuzzyMatching;
 
 use FuzzyMatching\Exception\StringLengthException;
+use FuzzyMatching\Exception\EncryptedStringLengthException;
 
 class Matcher
 {
@@ -36,6 +37,13 @@ class Matcher
 
 	public function encryptedMatch(string $str1, string $str2, string $mode = self::MODE_NORMAL)
 	{
+		if (strlen($str1) > self::MAX_ENCRYPTED_STRING_LENGTH) {
+			throw new EncryptedStringLengthException(self::MAX_ENCRYPTED_STRING_LENGTH);
+		}
+		if (strlen($str2) > self::MAX_ENCRYPTED_STRING_LENGTH) {
+			throw new EncryptedStringLengthException(self::MAX_ENCRYPTED_STRING_LENGTH);
+		}
+
 		// TODO
 
 		return false;

@@ -7,6 +7,7 @@ use FuzzyMatching\Matcher;
 use FuzzyMatching\Alphabet\EnglishAlphabet;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
 use FuzzyMatching\Exception\MimickedAlphabetException;
+use FuzzyMatching\Exception\EncryptedStringLengthException;
 use FuzzyMatching\Exception\StringLengthException;
 use UnicodeRanges\Range\AlchemicalSymbols;
 use PHPUnit\Framework\TestCase;
@@ -57,6 +58,17 @@ class MatcherTest extends TestCase
 	}
 
 	/**
+	 * @test
+	 */
+	public function encrypted_match_throws_encrypted_string_length_exception()
+	{
+		$this->expectException(EncryptedStringLengthException::class);
+		$foo = '🜁🝃🝃🝀🜿🝥🜎🝑🝪🝋🜤🜪🝳🝠🝋🝦🝆🝭🝦🝝🜘🝝🝡🜌🝦🝯🜤🜍🝯🜅🜎🜹🜹🝝🜅🜗🜋🜎🝠🝝🝑🝝🝆🜤🝉🝭🜬🝡🝯🝋🝭🜀🜬🜪🜌🜲🝆🜹🜌🜎🝯🜘🜗🝯🜋🜋🝂🜬🝆🜲🜹🜘🝝🝳🜌🝡🝭🜹🜌🜹';
+		$bar = '🝌🜃🜃🝕🝁🜘🜌🜎🝤🝍🜎🜌🜆🜍🝠🝠🜌🜎🝠🝇🜴🜎🝳🜆🝄🜴🜴🝟🝦🝡🜴🜔🜴🝄🝡🝄🝧🜴🜺🝦🜴🝄🜣🝇🝧🜴🝩🝟🝠🝤🝄🜥🜌🝦🝬🜥🜺🝇🝩🜼🜣🜌🝧🝤';
+		$this->matcher->encryptedMatch($foo, $bar, Matcher::MODE_STRICT);
+	}
+
+	/**
      * @test
      */
 	public function match_foo_bar_MODE_STRICT()
@@ -67,7 +79,7 @@ class MatcherTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function match_foo_bar_MODE_STRICT_encrypted()
+	public function encrypted_match_foo_bar_MODE_STRICT_encrypted()
 	{
 		$foo = $this->crypt->encrypt('foo');
 		$bar = $this->crypt->encrypt('bar');
