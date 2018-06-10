@@ -2,18 +2,20 @@
 
 namespace FuzzyMatching;
 
-use FuzzyMatching\Crypt;
 use FuzzyMatching\Exception\MatchException;
 
 class Match
 {
 	const MAX_STRING_LENGTH = 64;
 
-	private $crypt;
+	private $foregroundAlphabet;
 
-	public function __construct(Crypt $crypt)
+	private $backgroundAlphabet;
+
+	public function __construct(Alphabet $foregroundAlphabet, Alphabet $backgroundAlphabet)
 	{
-		$this->crypt = $crypt;
+		$this->foregroundAlphabet = $foregroundAlphabet;
+		$this->backgroundAlphabet = $backgroundAlphabet;
 	}
 
 	public function similarity($str1, $str2)
@@ -25,7 +27,7 @@ class Match
 		}
 
 		// remove the chars of the background alphabet
-		$backgroundAlphabetLetters = implode('', $this->crypt->getAlphabets()['background']->letters());
+		$backgroundAlphabetLetters = implode('', $this->backgroundAlphabet->letters());
 		$str1 = preg_replace("/[$backgroundAlphabetLetters]/u", '', $str1);
 		$str2 = preg_replace("/[$backgroundAlphabetLetters]/u", '', $str2);
 

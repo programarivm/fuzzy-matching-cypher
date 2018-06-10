@@ -14,14 +14,31 @@ use PHPUnit\Framework\TestCase;
 
 class MatchTest extends TestCase
 {
-	private $crypt;
+	private $foregroundAlphabet;
+
+	private $backgroundAlphabet;
 
 	private $match;
 
-	public function __construct() {
-		$this->crypt = new Crypt;
-		$this->match = new Match($this->crypt);
+	private $crypt;
 
+	public function __construct() {
+
+		$this->foregroundAlphabet = new MimickedAlphabet(
+			new EnglishAlphabet, [
+				new AlchemicalSymbols,
+				// new HangulJamo,
+			]
+		);
+
+		$this->backgroundAlphabet = new MimickedAlphabet(
+			new EnglishAlphabet, [
+				new Ethiopic
+			]
+		);
+
+		$this->match = new Match($this->foregroundAlphabet, $this->backgroundAlphabet);
+		$this->crypt = new Crypt($this->foregroundAlphabet, $this->backgroundAlphabet);
 	}
 
 	/**
