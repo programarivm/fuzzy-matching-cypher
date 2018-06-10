@@ -3,21 +3,13 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![Fuzzy Matching OPE Encryption](/resources/square-dot.jpg)
 
-Approximate string matching with order-preserving encryption (OPE).
+Playing with random Unicode alphabets to implement approximate string matching with order-preserving encryption (OPE).
 
-### 1. Install
-
-> TODO: Submit to packagist when finished
-
-### 2. Instantiation
-
-> TODO ...
-
-### 3. License
+### 1. License
 
 The GNU General Public License.
 
-### 4. Contributions
+### 2. Contributions
 
 Would you help make this library better? Contributions are welcome.
 
