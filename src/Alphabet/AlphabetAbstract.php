@@ -2,7 +2,9 @@
 
 namespace FuzzyMatching\Alphabet;
 
-class AlphabetAbstract
+use FuzzyMatching\Alphabet;
+
+class AlphabetAbstract implements Alphabet
 {
 	protected $letterFreq = [];
 

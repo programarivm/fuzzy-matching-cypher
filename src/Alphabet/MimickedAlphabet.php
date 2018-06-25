@@ -3,11 +3,10 @@
 namespace FuzzyMatching\Alphabet;
 
 use FuzzyMatching\Alphabet;
-use FuzzyMatching\Alphabet\AlphabetAbstract;
 use FuzzyMatching\Exception\MimickedAlphabetException;
 use UnicodeRanges\Randomizer;
 
-class MimickedAlphabet extends AlphabetAbstract implements Alphabet
+class MimickedAlphabet extends AlphabetAbstract
 {
     private $sourceAlphabet;
 

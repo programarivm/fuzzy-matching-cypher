@@ -2,10 +2,7 @@
 
 namespace FuzzyMatching\Alphabet;
 
-use FuzzyMatching\Alphabet;
-use FuzzyMatching\Alphabet\AlphabetAbstract;
-
-class EnglishAlphabet extends AlphabetAbstract implements Alphabet
+class EnglishAlphabet extends AlphabetAbstract
 {
 	protected $letterFreq = [
 		'e' => 12.02,
