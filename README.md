@@ -3,7 +3,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![Fuzzy Matching OPE Encryption](/resources/square-dot.jpg)
 
-Playing with random Unicode alphabets to implement approximate string matching with order-preserving encryption (OPE).
+Random Unicode alphabets to implement approximate string matching with order-preserving encryption (OPE).
 
 ### 1. License
 
