@@ -2,20 +2,18 @@
 
 namespace FuzzyMatching;
 
+use FuzzyMatching\Alphabet\FuzzyAlphabet;
 use FuzzyMatching\Exception\MatchException;
 
 class Match
 {
 	const MAX_STRING_LENGTH = 64;
 
-	private $foregroundAlphabet;
+	private $fuzzyAlphabet;
 
-	private $backgroundAlphabet;
-
-	public function __construct(Alphabet $foregroundAlphabet, Alphabet $backgroundAlphabet)
+	public function __construct(FuzzyAlphabet $fuzzyAlphabet)
 	{
-		$this->foregroundAlphabet = $foregroundAlphabet;
-		$this->backgroundAlphabet = $backgroundAlphabet;
+		$this->fuzzyAlphabet = $fuzzyAlphabet;
 	}
 
 	public function similarity($str1, $str2)
@@ -27,9 +25,9 @@ class Match
 		}
 
 		// remove the chars of the background alphabet
-		$backgroundAlphabetLetters = implode('', $this->backgroundAlphabet->letters());
-		$str1 = preg_replace("/[$backgroundAlphabetLetters]/u", '', $str1);
-		$str2 = preg_replace("/[$backgroundAlphabetLetters]/u", '', $str2);
+		$backgroundLetters = implode('', $this->fuzzyAlphabet->getBackground()->letters());
+		$str1 = preg_replace("/[$backgroundLetters]/u", '', $str1);
+		$str2 = preg_replace("/[$backgroundLetters]/u", '', $str2);
 
 		// calculate matches
 		$chars1 = preg_split('//u', $str1, null, PREG_SPLIT_NO_EMPTY);
