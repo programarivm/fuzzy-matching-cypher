@@ -65,8 +65,8 @@ $fuzzyAlphabet = new FuzzyAlphabet($foreground, $background);
 $crypt = new Crypt($fuzzyAlphabet);
 $match = new Match($fuzzyAlphabet);
 
-$a = $crypt->encrypt($argv[1]);
-$b = $crypt->encrypt($argv[2]);
+$a = $crypt->encrypt('foo');
+$b = $crypt->encrypt('boo');
 
 $match->similarity($a, $b);
 ```
