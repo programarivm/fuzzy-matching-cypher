@@ -5,7 +5,7 @@
 
 Random Unicode alphabets for approximate string matching with order-preserving encryption (OPE).
 
-### 1. Set up the Environment
+### Set up the Environment
 
 Create an `.env` file:
 
@@ -13,11 +13,76 @@ Create an `.env` file:
 
 This is the encryption algorithm key consisting in both a foreground alphabet and a background alphabet.
 
-### 2. License
+### Encryption Example
+
+```php
+<?php
+
+use FuzzyMatching\Crypt;
+use FuzzyMatching\Alphabet\EnglishAlphabet;
+use FuzzyMatching\Alphabet\FuzzyAlphabet;
+use FuzzyMatching\Alphabet\MimickedAlphabet;
+
+// ...
+
+$alphabet = new EnglishAlphabet;
+
+$foreground = new MimickedAlphabet($alphabet, getenv('FUZZY_MATCHING_FOREGROUND_ALPHABET'));
+$background = new MimickedAlphabet($alphabet, getenv('FUZZY_MATCHING_BACKGROUND_ALPHABET'));
+
+$fuzzyAlphabet = new FuzzyAlphabet($foreground, $background);
+
+$crypt = new Crypt($fuzzyAlphabet);
+
+$crypt->encrypt('foo');
+```
+
+The following CLI command is available:
+
+    $ php cli/crypt.php foo
+    𐤐ᄰᄰ🝋🝏🝁🜾🝐🜾🝮༽🜾࿑🜔🝍ན🜩ཫ🝮🝌🝋༽🝥ཆ༖🜩ཥ࿗གྷ🝍࿑ཆཫ🝨🝍གྷ🝅࿗🝨ཆ🝏🜫🝅🝛🝥🝍🝛࿗🝌🝮🝌ཫཆ🝮࿑🝨ཫ🝏🝁🝮🜫🝋🝨🝏
+
+### Fuzzy String Matching Example
+
+```php
+<?php
+
+use FuzzyMatching\Crypt;
+use FuzzyMatching\Match;
+use FuzzyMatching\Alphabet\EnglishAlphabet;
+use FuzzyMatching\Alphabet\FuzzyAlphabet;
+use FuzzyMatching\Alphabet\MimickedAlphabet;
+
+// ...
+
+$alphabet = new EnglishAlphabet;
+
+$foreground = new MimickedAlphabet($alphabet, getenv('FUZZY_MATCHING_FOREGROUND_ALPHABET'));
+$background = new MimickedAlphabet($alphabet, getenv('FUZZY_MATCHING_BACKGROUND_ALPHABET'));
+
+$fuzzyAlphabet = new FuzzyAlphabet($foreground, $background);
+
+$crypt = new Crypt($fuzzyAlphabet);
+$match = new Match($fuzzyAlphabet);
+
+$a = $crypt->encrypt($argv[1]);
+$b = $crypt->encrypt($argv[2]);
+
+$match->similarity($a, $b);
+```
+
+The following CLI command is available:
+
+    $ php cli/match.php foo boo
+    foo: ؠ𐤖𐤖བྷ࿐🜼🜈🜼༚🝥གྷ🝄༚🜒༳གྷཇ🜚🝔གྷཤ🜼བྷ༚🜅ཝ༚🜱🜒🜰🜈🜂🝛༚࿐🜒🜈ཇ🜅࿘🜷🜂ཤ🜂🜼🜰༳🝄🜏🜂࿐🜱༃🝄གྷཏ🜱🜂ཤ࿘࿐ཊ🝥🜚
+    boo: ᅤ𐤖𐤖🜏🜏🝔༃🜈🜼🜈བྷ🜚🝥🜅🝥࿘ཝ🜏🜰࿐བྷ🜏🜏བྷཇ🜰🜼🜅🜂༚ཊཇ🜂🜼🜼༃🝛࿐🜂🜈🜚ཏཇ🜈🜏🜚🜼🜱༃༃ཝ༳🜅ཏཤ🝔🜰🝄གྷ࿘🜂🝥🜚🜰
+    Similarity: 0.67
+
+### License
 
 The GNU General Public License.
 
-### 3. Contributions
+### Contributions
 
 Would you help make this library better? Contributions are welcome.
 
