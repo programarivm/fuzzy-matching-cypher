@@ -7,8 +7,6 @@ use FuzzyMatching\Alphabet\EnglishAlphabet;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
 use FuzzyMatching\Exception\CryptException;
 use PHPUnit\Framework\TestCase;
-use UnicodeRanges\Range\AlchemicalSymbols;
-use UnicodeRanges\Range\Ethiopic;
 
 class CryptTest extends TestCase
 {

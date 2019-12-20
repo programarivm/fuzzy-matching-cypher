@@ -6,8 +6,6 @@ use Dotenv\Dotenv;
 use FuzzyMatching\Crypt;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
 use FuzzyMatching\Alphabet\EnglishAlphabet;
-use UnicodeRanges\Range\AlchemicalSymbols;
-use UnicodeRanges\Range\Ethiopic;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 

@@ -7,9 +7,6 @@ use FuzzyMatching\Crypt;
 use FuzzyMatching\Match;
 use FuzzyMatching\Alphabet\EnglishAlphabet;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
-use UnicodeRanges\Range\AlchemicalSymbols;
-use UnicodeRanges\Range\Ethiopic;
-use UnicodeRanges\Range\HangulJamo;
 use PHPUnit\Framework\TestCase;
 
 class MatchTest extends TestCase

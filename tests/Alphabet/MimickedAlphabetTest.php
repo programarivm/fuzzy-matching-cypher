@@ -5,13 +5,6 @@ namespace FuzzyMatching\Tests;
 use FuzzyMatching\Alphabet\EnglishAlphabet;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
 use FuzzyMatching\Exception\MimickedAlphabetException;
-use UnicodeRanges\Range\AlchemicalSymbols;
-use UnicodeRanges\Range\Ethiopic;
-use UnicodeRanges\Range\GreekAndCoptic;
-use UnicodeRanges\Range\HangulJamo;
-use UnicodeRanges\Range\Hanunoo;
-use UnicodeRanges\Range\Hiragana;
-use UnicodeRanges\Range\Ugaritic;
 use PHPUnit\Framework\TestCase;
 
 class MimickedAlphabetTest extends TestCase
