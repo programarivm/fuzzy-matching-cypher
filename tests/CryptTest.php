@@ -4,12 +4,20 @@ namespace FuzzyMatching\Tests;
 
 use FuzzyMatching\Crypt;
 use FuzzyMatching\Alphabet\EnglishAlphabet;
+use FuzzyMatching\Alphabet\FuzzyAlphabet;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
 use FuzzyMatching\Exception\CryptException;
 use PHPUnit\Framework\TestCase;
 
 class CryptTest extends TestCase
 {
+	private $alphabet;
+
+	public function __construct()
+	{
+		$this->alphabet = new EnglishAlphabet;
+	}
+
 	/**
 	 * @test
 	 */
@@ -17,22 +25,10 @@ class CryptTest extends TestCase
 	{
 		$items = 'AlchemicalSymbols';
 
-		$foregroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet,
-			$items
-		);
+		$foreground = new MimickedAlphabet($this->alphabet, $items);
+		$background = new MimickedAlphabet($this->alphabet, $items, $foreground->letters());
 
-		$excludedLetters = $foregroundAlphabet->letters();
-
-		$backgroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet,
-			$items,
-			$excludedLetters
-		);
-
-		$crypt = new Crypt($foregroundAlphabet, $backgroundAlphabet);
-
-		$cipher = $crypt->encrypt('foobar');
+		$cipher = (new Crypt(new FuzzyAlphabet($foreground, $background)))->encrypt('foobar');
 
 		$this->assertEquals(64, mb_strlen($cipher));
 	}
@@ -42,23 +38,10 @@ class CryptTest extends TestCase
 	 */
 	public function encrypt_foobar_disjoint_alphabets()
 	{
-		$items = 'AlchemicalSymbols';
+		$foreground = new MimickedAlphabet($this->alphabet, 'AlchemicalSymbols');
+		$background = new MimickedAlphabet($this->alphabet, 'Ethiopic');
 
-		$foregroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet,
-			$items
-		);
-
-		$items = 'Ethiopic';
-
-		$backgroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet,
-			$items
-		);
-
-		$crypt = new Crypt($foregroundAlphabet, $backgroundAlphabet);
-
-		$cipher = $crypt->encrypt('foobar');
+		$cipher = (new Crypt(new FuzzyAlphabet($foreground, $background)))->encrypt('foobar');
 
 		$this->assertEquals(64, mb_strlen($cipher));
 	}
@@ -72,20 +55,8 @@ class CryptTest extends TestCase
 
 		$items = 'AlchemicalSymbols';
 
-		$foregroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet,
-			$items
-		);
+		$foreground = $background = new MimickedAlphabet($this->alphabet, $items);
 
-		$items = 'AlchemicalSymbols';
-
-		$backgroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet,
-			$items
-		);
-
-		$crypt = new Crypt($foregroundAlphabet, $backgroundAlphabet);
-
-		$cipher = $crypt->encrypt('foooooooooooooooooooooooooooooooo');
+		$cipher = (new Crypt(new FuzzyAlphabet($foreground, $background)))->encrypt('foooooooooooooooooooooooooooooooo');
 	}
 }

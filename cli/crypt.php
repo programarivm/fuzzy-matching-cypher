@@ -4,9 +4,9 @@ namespace PGNChess\Cli;
 
 use Dotenv\Dotenv;
 use FuzzyMatching\Crypt;
+use FuzzyMatching\Alphabet\EnglishAlphabet;
 use FuzzyMatching\Alphabet\FuzzyAlphabet;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
-use FuzzyMatching\Alphabet\EnglishAlphabet;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 

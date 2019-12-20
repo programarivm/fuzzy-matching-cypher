@@ -6,36 +6,37 @@ use Dotenv\Dotenv;
 use FuzzyMatching\Crypt;
 use FuzzyMatching\Match;
 use FuzzyMatching\Alphabet\EnglishAlphabet;
+use FuzzyMatching\Alphabet\FuzzyAlphabet;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
 use PHPUnit\Framework\TestCase;
 
 class MatchTest extends TestCase
 {
-	private $foregroundAlphabet;
-
-	private $backgroundAlphabet;
-
 	private $match;
 
 	private $crypt;
 
-	public function __construct() {
-
+	public function __construct()
+	{
 		$dotenv = Dotenv::createImmutable(__DIR__.'/../');
 		$dotenv->load();
 
-		$this->foregroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet,
+		$alphabet = new EnglishAlphabet;
+
+		$foreground = new MimickedAlphabet(
+		    $alphabet,
 		    getenv('FUZZY_MATCHING_FOREGROUND_ALPHABET')
 		);
 
-		$this->backgroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet,
+		$background = new MimickedAlphabet(
+		    $alphabet,
 		    getenv('FUZZY_MATCHING_BACKGROUND_ALPHABET')
 		);
 
-		$this->match = new Match($this->foregroundAlphabet, $this->backgroundAlphabet);
-		$this->crypt = new Crypt($this->foregroundAlphabet, $this->backgroundAlphabet);
+		$fuzzyAlphabet = new FuzzyAlphabet($foreground, $background);
+
+		$this->match = new Match($fuzzyAlphabet);
+		$this->crypt = new Crypt($fuzzyAlphabet);
 	}
 
 	/**

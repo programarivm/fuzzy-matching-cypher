@@ -22,34 +22,34 @@ class MimickedAlphabetTest extends TestCase
 	public function letter_freq()
 	{
 		$items = 'AlchemicalSymbols,Ethiopic,GreekAndCoptic,HangulJamo,Hanunoo,Hiragana,Ugaritic';
-		$mimickedEnglish = (new MimickedAlphabet($this->alphabet, $items))->getLetterFreq();
+		$mimic = (new MimickedAlphabet($this->alphabet, $items))->getLetterFreq();
 
-		$this->assertEquals(12.02, $mimickedEnglish['e']['freq']);
-		$this->assertEquals(9.10, $mimickedEnglish['t']['freq']);
-		$this->assertEquals(8.12, $mimickedEnglish['a']['freq']);
-		$this->assertEquals(7.68, $mimickedEnglish['o']['freq']);
-		$this->assertEquals(7.31, $mimickedEnglish['i']['freq']);
-		$this->assertEquals(6.95, $mimickedEnglish['n']['freq']);
-		$this->assertEquals(6.28, $mimickedEnglish['s']['freq']);
-		$this->assertEquals(6.02, $mimickedEnglish['r']['freq']);
-		$this->assertEquals(5.92, $mimickedEnglish['h']['freq']);
-		$this->assertEquals(4.32, $mimickedEnglish['d']['freq']);
-		$this->assertEquals(3.98, $mimickedEnglish['l']['freq']);
-		$this->assertEquals(2.88, $mimickedEnglish['u']['freq']);
-		$this->assertEquals(2.71, $mimickedEnglish['c']['freq']);
-		$this->assertEquals(2.61, $mimickedEnglish['m']['freq']);
-		$this->assertEquals(2.30, $mimickedEnglish['f']['freq']);
-		$this->assertEquals(2.11, $mimickedEnglish['y']['freq']);
-		$this->assertEquals(2.09, $mimickedEnglish['w']['freq']);
-		$this->assertEquals(2.03, $mimickedEnglish['g']['freq']);
-		$this->assertEquals(1.82, $mimickedEnglish['p']['freq']);
-		$this->assertEquals(1.49, $mimickedEnglish['b']['freq']);
-		$this->assertEquals(1.11, $mimickedEnglish['v']['freq']);
-		$this->assertEquals(0.69, $mimickedEnglish['k']['freq']);
-		$this->assertEquals(0.17, $mimickedEnglish['x']['freq']);
-		$this->assertEquals(0.11, $mimickedEnglish['q']['freq']);
-		$this->assertEquals(0.10, $mimickedEnglish['j']['freq']);
-		$this->assertEquals(0.07, $mimickedEnglish['z']['freq']);
+		$this->assertEquals(12.02, $mimic['e']['freq']);
+		$this->assertEquals(9.10, $mimic['t']['freq']);
+		$this->assertEquals(8.12, $mimic['a']['freq']);
+		$this->assertEquals(7.68, $mimic['o']['freq']);
+		$this->assertEquals(7.31, $mimic['i']['freq']);
+		$this->assertEquals(6.95, $mimic['n']['freq']);
+		$this->assertEquals(6.28, $mimic['s']['freq']);
+		$this->assertEquals(6.02, $mimic['r']['freq']);
+		$this->assertEquals(5.92, $mimic['h']['freq']);
+		$this->assertEquals(4.32, $mimic['d']['freq']);
+		$this->assertEquals(3.98, $mimic['l']['freq']);
+		$this->assertEquals(2.88, $mimic['u']['freq']);
+		$this->assertEquals(2.71, $mimic['c']['freq']);
+		$this->assertEquals(2.61, $mimic['m']['freq']);
+		$this->assertEquals(2.30, $mimic['f']['freq']);
+		$this->assertEquals(2.11, $mimic['y']['freq']);
+		$this->assertEquals(2.09, $mimic['w']['freq']);
+		$this->assertEquals(2.03, $mimic['g']['freq']);
+		$this->assertEquals(1.82, $mimic['p']['freq']);
+		$this->assertEquals(1.49, $mimic['b']['freq']);
+		$this->assertEquals(1.11, $mimic['v']['freq']);
+		$this->assertEquals(0.69, $mimic['k']['freq']);
+		$this->assertEquals(0.17, $mimic['x']['freq']);
+		$this->assertEquals(0.11, $mimic['q']['freq']);
+		$this->assertEquals(0.10, $mimic['j']['freq']);
+		$this->assertEquals(0.07, $mimic['z']['freq']);
 	}
 
 	/**
@@ -58,11 +58,10 @@ class MimickedAlphabetTest extends TestCase
 	public function disjoint_letters_English_AlchemicalSymbols()
 	{
 		$items = 'AlchemicalSymbols';
-		$foregroundAlphabet = new MimickedAlphabet($this->alphabet, $items);
-		$excludedLetters = $foregroundAlphabet->letters();
-		$backgroundAlphabet = new MimickedAlphabet($this->alphabet, $items, $excludedLetters);
+		$foreground = new MimickedAlphabet($this->alphabet, $items);
+		$background = new MimickedAlphabet($this->alphabet, $items, $foreground->letters());
 
-		$this->assertEquals([], array_intersect($excludedLetters, $backgroundAlphabet->letters()));
+		$this->assertEquals([], array_intersect($foreground->letters(), $background->letters()));
 	}
 
 	/**
@@ -71,11 +70,10 @@ class MimickedAlphabetTest extends TestCase
 	public function disjoint_letters_English_Ethiopic()
 	{
 		$items = 'Ethiopic';
-		$foregroundAlphabet = new MimickedAlphabet($this->alphabet, $items);
-		$excludedLetters = $foregroundAlphabet->letters();
-		$backgroundAlphabet = new MimickedAlphabet($this->alphabet, $items, $excludedLetters);
+		$foreground = new MimickedAlphabet($this->alphabet, $items);
+		$background = new MimickedAlphabet($this->alphabet, $items, $foreground->letters());
 
-		$this->assertEquals([], array_intersect($excludedLetters, $backgroundAlphabet->letters()));
+		$this->assertEquals([], array_intersect($foreground->letters(), $background->letters()));
 	}
 
 	/**
@@ -86,7 +84,7 @@ class MimickedAlphabetTest extends TestCase
         $this->expectException(MimickedAlphabetException::class);
 
 		$items = 'Ugaritic';
-		$foregroundAlphabet = new MimickedAlphabet($this->alphabet,	$items);
-		$backgroundAlphabet = new MimickedAlphabet($this->alphabet,	$items, $foregroundAlphabet->letters());
+		$foreground = new MimickedAlphabet($this->alphabet, $items);
+		$background = new MimickedAlphabet($this->alphabet, $items, $foreground->letters());
 	}
 }
