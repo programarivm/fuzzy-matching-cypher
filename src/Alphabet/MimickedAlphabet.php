@@ -8,36 +8,32 @@ use UnicodeRanges\Randomizer;
 
 class MimickedAlphabet extends AlphabetAbstract
 {
-    private $sourceAlphabet;
+    private $alphabet;
 
     private $unicodeRanges = [];
 
     private $excludedLetters;
 
-    public function __construct(Alphabet $sourceAlphabet, string $items, array $excludedLetters = [])
+    public function __construct(Alphabet $alphabet, string $unicodeRanges, array $excludedLetters = [])
     {
-        $items = explode(',', $items);
+        $items = explode(',', $unicodeRanges);
 
         foreach ($items as $item) {
             $unicodeRange = "\UnicodeRanges\Range\\$item";
             if (!class_exists($unicodeRange)) {
-                throw new MimickedAlphabetException(
-                    "Whoops! The $unicodeRange class does not exist."
-                );
+                throw new MimickedAlphabetException("Whoops! The $unicodeRange class does not exist.");
             }
             $this->unicodeRanges[] = new $unicodeRange();
         }
 
-        if (($this->availableChars($this->unicodeRanges) - count($excludedLetters)) < count($sourceAlphabet->getLetterFreq())) {
-            throw new MimickedAlphabetException(
-                'Whoops! The are not enough Unicode characters left to mimic the source alphabet.'
-            );
+        if (($this->availableChars($this->unicodeRanges) - count($excludedLetters)) < count($alphabet->getLetterFreq())) {
+            throw new MimickedAlphabetException('Whoops! There are no characters left to mimic the alphabet.');
         }
 
-        $this->sourceAlphabet = $sourceAlphabet;
+        $this->alphabet = $alphabet;
         $this->excludedLetters = $excludedLetters;
 
-        foreach ($this->sourceAlphabet->getLetterFreq() as $key => $val) {
+        foreach ($this->alphabet->getLetterFreq() as $key => $val) {
             do {
                 $char = Randomizer::printableChar($this->unicodeRanges);
             } while ($this->hasLetter($char) || in_array($char, $excludedLetters));

@@ -8,7 +8,8 @@ class AlphabetAbstract implements Alphabet
 {
 	protected $letterFreq = [];
 
-	public function getLetterFreq() {
+	public function getLetterFreq()
+	{
 		return $this->letterFreq;
 	}
 
