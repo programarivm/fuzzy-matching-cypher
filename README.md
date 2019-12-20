@@ -5,11 +5,19 @@
 
 Random Unicode alphabets for approximate string matching with order-preserving encryption (OPE).
 
-### 1. License
+### 1. Set up the Environment
+
+Create an `.env` file:
+
+    cp .env.example .env
+
+This is the encryption algorithm key consisting in both a foreground alphabet and a background alphabet.
+
+### 2. License
 
 The GNU General Public License.
 
-### 2. Contributions
+### 3. Contributions
 
 Would you help make this library better? Contributions are welcome.
 

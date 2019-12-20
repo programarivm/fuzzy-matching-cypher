@@ -17,17 +17,18 @@ class CryptTest extends TestCase
 	 */
 	public function encrypt_foobar_not_disjoint_alphabets()
 	{
+		$items = 'AlchemicalSymbols';
+
 		$foregroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet, [
-				new AlchemicalSymbols
-			]
+			new EnglishAlphabet,
+			$items
 		);
 
 		$excludedLetters = $foregroundAlphabet->letters();
 
 		$backgroundAlphabet = new MimickedAlphabet(
 			new EnglishAlphabet,
-			$foregroundAlphabet->getUnicodeRanges(),
+			$items,
 			$excludedLetters
 		);
 
@@ -43,16 +44,18 @@ class CryptTest extends TestCase
 	 */
 	public function encrypt_foobar_disjoint_alphabets()
 	{
+		$items = 'AlchemicalSymbols';
+
 		$foregroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet, [
-				new AlchemicalSymbols
-			]
+			new EnglishAlphabet,
+			$items
 		);
 
+		$items = 'Ethiopic';
+
 		$backgroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet, [
-				new Ethiopic
-			]
+			new EnglishAlphabet,
+			$items
 		);
 
 		$crypt = new Crypt($foregroundAlphabet, $backgroundAlphabet);
@@ -69,16 +72,18 @@ class CryptTest extends TestCase
 	{
 		$this->expectException(CryptException::class);
 
+		$items = 'AlchemicalSymbols';
+
 		$foregroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet, [
-				new AlchemicalSymbols
-			]
+			new EnglishAlphabet,
+			$items
 		);
 
+		$items = 'AlchemicalSymbols';
+
 		$backgroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet, [
-				new Ethiopic
-			]
+			new EnglishAlphabet,
+			$items
 		);
 
 		$crypt = new Crypt($foregroundAlphabet, $backgroundAlphabet);

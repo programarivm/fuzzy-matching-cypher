@@ -28,16 +28,8 @@ class MimickedAlphabetTest extends TestCase
 	 */
 	public function letter_freq()
 	{
-		$unicodeRanges = [
-			new AlchemicalSymbols,
-			new Ethiopic,
-			new GreekAndCoptic,
-			new HangulJamo,
-			new Hanunoo,
-			new Hiragana,
-			new Ugaritic,
-		];
-		$mimickedEnglish = (new MimickedAlphabet($this->alphabet, $unicodeRanges))->getLetterFreq();
+		$items = 'AlchemicalSymbols,Ethiopic,GreekAndCoptic,HangulJamo,Hanunoo,Hiragana,Ugaritic';
+		$mimickedEnglish = (new MimickedAlphabet($this->alphabet, $items))->getLetterFreq();
 
 		$this->assertEquals(12.02, $mimickedEnglish['e']['freq']);
 		$this->assertEquals(9.10, $mimickedEnglish['t']['freq']);
@@ -72,18 +64,10 @@ class MimickedAlphabetTest extends TestCase
 	 */
 	public function disjoint_letters_English_AlchemicalSymbols()
 	{
-		$foregroundAlphabet = new MimickedAlphabet($this->alphabet, [
-				new AlchemicalSymbols,
-			]
-		);
-
+		$items = 'AlchemicalSymbols';
+		$foregroundAlphabet = new MimickedAlphabet($this->alphabet, $items);
 		$excludedLetters = $foregroundAlphabet->letters();
-
-		$backgroundAlphabet = new MimickedAlphabet($this->alphabet, [
-				new AlchemicalSymbols,
-			],
-			$excludedLetters
-		);
+		$backgroundAlphabet = new MimickedAlphabet($this->alphabet, $items, $excludedLetters);
 
 		$this->assertEquals([], array_intersect($excludedLetters, $backgroundAlphabet->letters()));
 	}
@@ -93,18 +77,10 @@ class MimickedAlphabetTest extends TestCase
 	 */
 	public function disjoint_letters_English_Ethiopic()
 	{
-		$foregroundAlphabet = new MimickedAlphabet($this->alphabet, [
-				new Ethiopic,
-			]
-		);
-
+		$items = 'Ethiopic';
+		$foregroundAlphabet = new MimickedAlphabet($this->alphabet, $items);
 		$excludedLetters = $foregroundAlphabet->letters();
-
-		$backgroundAlphabet = new MimickedAlphabet($this->alphabet, [
-				new Ethiopic,
-			],
-			$excludedLetters
-		);
+		$backgroundAlphabet = new MimickedAlphabet($this->alphabet, $items, $excludedLetters);
 
 		$this->assertEquals([], array_intersect($excludedLetters, $backgroundAlphabet->letters()));
 	}
@@ -116,15 +92,8 @@ class MimickedAlphabetTest extends TestCase
 	{
         $this->expectException(MimickedAlphabetException::class);
 
-		$foregroundAlphabet = new MimickedAlphabet($this->alphabet,	[
-				new Ugaritic,
-			]
-		);
-
-		$backgroundAlphabet = new MimickedAlphabet($this->alphabet,	[
-				new Ugaritic,
-			],
-			$foregroundAlphabet->letters()
-		);
+		$items = 'Ugaritic';
+		$foregroundAlphabet = new MimickedAlphabet($this->alphabet,	$items);
+		$backgroundAlphabet = new MimickedAlphabet($this->alphabet,	$items, $foregroundAlphabet->letters());
 	}
 }

@@ -2,6 +2,7 @@
 
 namespace FuzzyMatching\Tests;
 
+use Dotenv\Dotenv;
 use FuzzyMatching\Crypt;
 use FuzzyMatching\Match;
 use FuzzyMatching\Alphabet\EnglishAlphabet;
@@ -23,16 +24,17 @@ class MatchTest extends TestCase
 
 	public function __construct() {
 
+		$dotenv = Dotenv::createImmutable(__DIR__.'/../');
+		$dotenv->load();
+
 		$this->foregroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet, [
-				new AlchemicalSymbols,
-			]
+			new EnglishAlphabet,
+		    getenv('FUZZY_MATCHING_FOREGROUND_ALPHABET')
 		);
 
 		$this->backgroundAlphabet = new MimickedAlphabet(
-			new EnglishAlphabet, [
-				new Ethiopic
-			]
+			new EnglishAlphabet,
+		    getenv('FUZZY_MATCHING_BACKGROUND_ALPHABET')
 		);
 
 		$this->match = new Match($this->foregroundAlphabet, $this->backgroundAlphabet);

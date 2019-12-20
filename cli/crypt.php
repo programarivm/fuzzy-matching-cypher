@@ -15,15 +15,13 @@ $dotenv = Dotenv::createImmutable(__DIR__.'/../');
 $dotenv->load();
 
 $foregroundAlphabet = new MimickedAlphabet(
-  new EnglishAlphabet, [
-    new AlchemicalSymbols,
-  ]
+    new EnglishAlphabet,
+    getenv('FUZZY_MATCHING_FOREGROUND_ALPHABET')
 );
 
 $backgroundAlphabet = new MimickedAlphabet(
-  new EnglishAlphabet, [
-    new Ethiopic
-  ]
+    new EnglishAlphabet,
+    getenv('FUZZY_MATCHING_BACKGROUND_ALPHABET')
 );
 
 $crypt = new Crypt($foregroundAlphabet, $backgroundAlphabet);

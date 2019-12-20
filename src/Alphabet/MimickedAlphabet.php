@@ -10,20 +10,31 @@ class MimickedAlphabet extends AlphabetAbstract
 {
     private $sourceAlphabet;
 
-    private $unicodeRanges;
+    private $unicodeRanges = [];
 
     private $excludedLetters;
 
-    public function __construct(Alphabet $sourceAlphabet, array $unicodeRanges, array $excludedLetters = [])
+    public function __construct(Alphabet $sourceAlphabet, string $items, array $excludedLetters = [])
     {
-        if (($this->availableChars($unicodeRanges) - count($excludedLetters)) < count($sourceAlphabet->getLetterFreq())) {
+        $items = explode(',', $items);
+
+        foreach ($items as $item) {
+            $unicodeRange = "\UnicodeRanges\Range\\$item";
+            if (!class_exists($unicodeRange)) {
+                throw new MimickedAlphabetException(
+                    "Whoops! The $unicodeRange class does not exist."
+                );
+            }
+            $this->unicodeRanges[] = new $unicodeRange();
+        }
+
+        if (($this->availableChars($this->unicodeRanges) - count($excludedLetters)) < count($sourceAlphabet->getLetterFreq())) {
             throw new MimickedAlphabetException(
                 'Whoops! The are not enough Unicode characters left to mimic the source alphabet.'
             );
         }
 
         $this->sourceAlphabet = $sourceAlphabet;
-        $this->unicodeRanges = $unicodeRanges;
         $this->excludedLetters = $excludedLetters;
 
         foreach ($this->sourceAlphabet->getLetterFreq() as $key => $val) {
