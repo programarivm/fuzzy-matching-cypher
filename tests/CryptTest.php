@@ -23,8 +23,12 @@ class CryptTest extends TestCase
 	 */
 	public function encrypt_foobar_not_disjoint_alphabets()
 	{
-		$foreground = new MimickedAlphabet($this->alphabet, 'AlchemicalSymbols');
-		$background = new MimickedAlphabet($this->alphabet, 'AlchemicalSymbols', $foreground->letters());
+		$items = [
+			new \UnicodeRanges\Range\AlchemicalSymbols,
+		];
+
+		$foreground = new MimickedAlphabet($this->alphabet, $items);
+		$background = new MimickedAlphabet($this->alphabet, $items, $foreground->letters());
 
 		$cipher = (new Crypt(new FuzzyAlphabet($foreground, $background)))->encrypt('foobar');
 
@@ -36,8 +40,13 @@ class CryptTest extends TestCase
 	 */
 	public function encrypt_foobar_disjoint_alphabets()
 	{
-		$foreground = new MimickedAlphabet($this->alphabet, 'AlchemicalSymbols');
-		$background = new MimickedAlphabet($this->alphabet, 'Ethiopic');
+		$foreground = new MimickedAlphabet($this->alphabet, [
+			new \UnicodeRanges\Range\AlchemicalSymbols,
+		]);
+
+		$background = new MimickedAlphabet($this->alphabet, [
+			new \UnicodeRanges\Range\Ethiopic,
+		]);
 
 		$cipher = (new Crypt(new FuzzyAlphabet($foreground, $background)))->encrypt('foobar');
 
@@ -51,7 +60,9 @@ class CryptTest extends TestCase
 	{
 		$this->expectException(CryptException::class);
 
-		$foreground = $background = new MimickedAlphabet($this->alphabet, 'AlchemicalSymbols');
+		$foreground = $background = new MimickedAlphabet($this->alphabet, [
+			new \UnicodeRanges\Range\AlchemicalSymbols,
+		]);
 
 		$cipher = (new Crypt(new FuzzyAlphabet($foreground, $background)))->encrypt('foooooooooooooooooooooooooooooooo');
 	}

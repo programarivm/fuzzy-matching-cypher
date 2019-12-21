@@ -19,22 +19,20 @@ Via composer:
 
 ### Set up the Environment
 
-Create an `.env` file:
+To generate the `.fuzzy-alphabet` serialized object:
 
-    cp .env.example .env
+```php
+<?php
 
-The file contains the encryption algorithm key consisting in both a foreground alphabet and a background alphabet:
+use FuzzyMatching\Alphabet\EnglishAlphabet;
+use FuzzyMatching\Alphabet\FuzzyAlphabet;
 
-    FUZZY_MATCHING_FOREGROUND_ALPHABET="Arabic,HangulJamo,Phoenician"
-    FUZZY_MATCHING_BACKGROUND_ALPHABET="AlchemicalSymbols,Tibetan"
+$english = new EnglishAlphabet;
 
-These variables are used to calculate the so-called fuzzy alphabet which is a serialized object stored in the `.fuzzy-alphabet` file.
+new FuzzyAlphabet($english);
+```
 
-The unicode ranges available can be found at [programarivm/unicode-ranges](https://github.com/programarivm/unicode-ranges/tree/master/src/Range)
-
-### Generate the Fuzzy Alphabet
-
-To generate the `.fuzzy-alphabet` file:
+The following CLI command is available at [`cli/fuzzy-alphabet.php`](https://github.com/programarivm/fuzzy-matching-ope-encryption/blob/master/cli/fuzzy-alphabet.php):
 
     $ php cli/fuzzy-alphabet.php
 

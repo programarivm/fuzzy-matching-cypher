@@ -14,23 +14,14 @@ class MimickedAlphabet extends AlphabetAbstract
 
     private $excludedLetters;
 
-    public function __construct(Alphabet $alphabet, string $unicodeRanges, array $excludedLetters = [])
+    public function __construct(Alphabet $alphabet, array $unicodeRanges, array $excludedLetters = [])
     {
-        $items = explode(',', $unicodeRanges);
-
-        foreach ($items as $item) {
-            $unicodeRange = "\UnicodeRanges\Range\\$item";
-            if (!class_exists($unicodeRange)) {
-                throw new MimickedAlphabetException("Whoops! The $unicodeRange class does not exist.");
-            }
-            $this->unicodeRanges[] = new $unicodeRange();
-        }
-
-        if (($this->availableChars($this->unicodeRanges) - count($excludedLetters)) < count($alphabet->getLetterFreq())) {
+        if (($this->availableChars($unicodeRanges) - count($excludedLetters)) < count($alphabet->getLetterFreq())) {
             throw new MimickedAlphabetException('Whoops! There are no characters left to mimic the alphabet.');
         }
 
         $this->alphabet = $alphabet;
+        $this->unicodeRanges = $unicodeRanges;
         $this->excludedLetters = $excludedLetters;
 
         foreach ($this->alphabet->getLetterFreq() as $key => $val) {
