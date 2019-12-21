@@ -44,8 +44,6 @@ To generate the `.fuzzy-alphabet` file:
 <?php
 use FuzzyMatching\Crypt;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
 $fuzzyAlphabet = unserialize(file_get_contents(__DIR__ . '/../.fuzzy-alphabet'));
 
 $crypt = new Crypt($fuzzyAlphabet);
@@ -70,8 +68,6 @@ Every time it is run the cypher will change:
 
 use FuzzyMatching\Crypt;
 use FuzzyMatching\Match;
-
-require_once __DIR__ . '/../vendor/autoload.php';
 
 $fuzzyAlphabet = unserialize(file_get_contents(__DIR__ . '/../.fuzzy-alphabet'));
 
