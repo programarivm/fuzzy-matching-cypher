@@ -2,6 +2,7 @@
 
 namespace FuzzyMatching\Alphabet;
 
+use FuzzyMatching\Alphabet;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
 
 class FuzzyAlphabet
@@ -10,10 +11,10 @@ class FuzzyAlphabet
 
 	private $background;
 
-	public function __construct(MimickedAlphabet $foreground, MimickedAlphabet $background)
+	public function __construct(Alphabet $alphabet)
 	{
-		$this->foreground = $foreground;
-		$this->background = $background;
+		$this->foreground = new MimickedAlphabet($alphabet, getenv('FUZZY_MATCHING_FOREGROUND_ALPHABET'));
+		$this->background = new MimickedAlphabet($alphabet, getenv('FUZZY_MATCHING_FOREGROUND_ALPHABET'));
 
 		file_put_contents(__DIR__.'/../../.fuzzy-alphabet', serialize($this));
 	}
