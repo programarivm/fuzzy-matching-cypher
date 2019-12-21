@@ -23,10 +23,8 @@ class CryptTest extends TestCase
 	 */
 	public function encrypt_foobar_not_disjoint_alphabets()
 	{
-		$items = 'AlchemicalSymbols';
-
-		$foreground = new MimickedAlphabet($this->alphabet, $items);
-		$background = new MimickedAlphabet($this->alphabet, $items, $foreground->letters());
+		$foreground = new MimickedAlphabet($this->alphabet, 'AlchemicalSymbols');
+		$background = new MimickedAlphabet($this->alphabet, 'AlchemicalSymbols', $foreground->letters());
 
 		$cipher = (new Crypt(new FuzzyAlphabet($foreground, $background)))->encrypt('foobar');
 
@@ -53,9 +51,7 @@ class CryptTest extends TestCase
 	{
 		$this->expectException(CryptException::class);
 
-		$items = 'AlchemicalSymbols';
-
-		$foreground = $background = new MimickedAlphabet($this->alphabet, $items);
+		$foreground = $background = new MimickedAlphabet($this->alphabet, 'AlchemicalSymbols');
 
 		$cipher = (new Crypt(new FuzzyAlphabet($foreground, $background)))->encrypt('foooooooooooooooooooooooooooooooo');
 	}

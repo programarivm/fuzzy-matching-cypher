@@ -18,20 +18,7 @@ class MatchTest extends TestCase
 
 	public function __construct()
 	{
-		$alphabet = new EnglishAlphabet;
-
-		$foreground = new MimickedAlphabet(
-		    $alphabet,
-		    getenv('FUZZY_MATCHING_FOREGROUND_ALPHABET')
-		);
-
-		$background = new MimickedAlphabet(
-		    $alphabet,
-		    getenv('FUZZY_MATCHING_BACKGROUND_ALPHABET')
-		);
-
-		$fuzzyAlphabet = new FuzzyAlphabet($foreground, $background);
-
+		$fuzzyAlphabet = unserialize(file_get_contents(__DIR__ . '/../.fuzzy-alphabet'));
 		$this->match = new Match($fuzzyAlphabet);
 		$this->crypt = new Crypt($fuzzyAlphabet);
 	}
