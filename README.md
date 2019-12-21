@@ -17,7 +17,12 @@ Create an `.env` file:
 
     cp .env.example .env
 
-This is the encryption algorithm key consisting in both a foreground alphabet and a background alphabet.
+This is the encryption algorithm key consisting in both a foreground alphabet and a background alphabet:
+
+    FUZZY_MATCHING_FOREGROUND_ALPHABET="Arabic,HangulJamo,Phoenician"
+    FUZZY_MATCHING_BACKGROUND_ALPHABET="AlchemicalSymbols,Tibetan"
+
+The unicode ranges available can be found at [programarivm/unicode-ranges](https://github.com/programarivm/unicode-ranges/tree/master/src/Range)
 
 ### Encryption Example
 
@@ -48,7 +53,7 @@ The following CLI command is available:
     $ php cli/crypt.php foo
     🜄🜎🜤༁བྷདྷབྷ🜎🜧🜹🜄🜛🝱དྷ🜊༁ᇈདྷདྷ༻༁🜛ྉ🜎༻🜎ཪན🝱🜎ཪ۩🜲༫🜤༫ཪ༭ཎ🝱🜛🜪ྉ🜄ཪ🜘🜎🜙༫ཪབྷ🜲۩🜹🜪ྉ🜙🜧🜤༁ན།ཪྉ
 
-Every time the command is run, the fuzzy alphabet is computed from scratch and therefore the cypher will be different:
+Every time the command is run, the fuzzy alphabet is computed from scratch and therefore the cypher obtained will change:
 
     $ php cli/crypt.php foo
     🜭ق༰🝌🝌🝊🝣🝢࿒࿎🝌🝇🝊🝉🝲࿎🜧ྉ༴🝅🜦🝡🜧🝊🝣༴🝊🜪ྉ🝊🜭ྉ🝡🜦🝉🜭ྉ🜪🝢🝊🝊🜧༔🜖🝣🜦🜧🜧🝠ྉ🜖𐤎༰🜻🜸🝌𐤎🝣🝇༴🝠🝣🝚🜦
@@ -85,8 +90,15 @@ $match->similarity($a, $b);
 The following CLI command is available:
 
     $ php cli/match.php foo boo
-    foo: ؠ𐤖𐤖བྷ࿐🜼🜈🜼༚🝥གྷ🝄༚🜒༳གྷཇ🜚🝔གྷཤ🜼བྷ༚🜅ཝ༚🜱🜒🜰🜈🜂🝛༚࿐🜒🜈ཇ🜅࿘🜷🜂ཤ🜂🜼🜰༳🝄🜏🜂࿐🜱༃🝄གྷཏ🜱🜂ཤ࿘࿐ཊ🝥🜚
-    boo: ᅤ𐤖𐤖🜏🜏🝔༃🜈🜼🜈བྷ🜚🝥🜅🝥࿘ཝ🜏🜰࿐བྷ🜏🜏བྷཇ🜰🜼🜅🜂༚ཊཇ🜂🜼🜼༃🝛࿐🜂🜈🜚ཏཇ🜈🜏🜚🜼🜱༃༃ཝ༳🜅ཏཤ🝔🜰🝄གྷ࿘🜂🝥🜚🜰
+    foo: 🝲🜤🜀🜼ཞ🜳࿏🝲࿏🜀🜳༮ۅ𐤉🝚༯🝥࿔🜳🝞བྷ🜳ཞ༯🝚🝏🝓🜓🝭🝚འ🝥༐🜼🜼🜼🜹🜹🝲༐🝥🜂🝚🝲བྷབྷ𐤉🜭🝲🜭🝏🝞🜀🝂🝲🜂༯🝲🝞༐🝞🜳🝥🝞
+    boo: 🜳ཞ🜭🝲༯🝚𐤉࿔🝭🜭🝲འ𐤉🝥༮࿔🝥🜂🜂ཞཞ༮🝥༐🝂🝞🜀🜼🜤༮ᇏ࿔🝥ྈ🝲🝏🜼🝂🜀࿏🝭🝚🝚࿔🜤ྈ࿏🝲🜼🝂ྈ🝓བྷྈ🜀࿔🝥🝚🝚🝭🝂ྈ🜤༮
+    Similarity: 0.67
+
+Every time the command is run, the fuzzy alphabets are computed from scratch and therefore the cyphers will change:
+
+    php cli/match.php foo boo
+    foo: ༠🝈འ༠༭𐤎ྈྈ🝈🜷🜧རའ🜌🝈འ🜗🜷འ🜑🜷🜦ྈ🜑🝪ྈ🜕༠🜦🜑🜗🜥ཀྵཀྵ𐤎🜑🝩🝪ཀྵ🜦ྈ🝩འ🜦🜑🜢🝈🝈🝀🜽🜪ར🜗🜪🝪𐤛🝪🜑🜕🜑༭ཀྵ🜗🜕
+    boo: 🜑ཀྵ࿈༭🜧𐤎🝀༭༭🜽🜑ར🜦༭🜑🜕🜢🝩🝪🜒ཀྵ🝈🜕ར𐤎ྈ🜾🜌🜪ར🜗🜪ཀྵ🝩🝈🜪🝀🜢🜌🜑🜌འ🜦ྈ🜾༭🜦🝀🜾🜧🜐🜥🜷🜌🜌🜑ᅺ🜷🝀🜌༭ྈ🜪ར
     Similarity: 0.67
 
 ### License
