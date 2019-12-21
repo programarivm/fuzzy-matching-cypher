@@ -56,12 +56,12 @@ $cypher = $crypt->encrypt('foo');
 The following CLI command is available at [`cli/crypt.php`](https://github.com/programarivm/fuzzy-matching-ope-encryption/blob/master/cli/crypt.php):
 
     $ php cli/crypt.php foo
-    🜄🜎🜤༁བྷདྷབྷ🜎🜧🜹🜄🜛🝱དྷ🜊༁ᇈདྷདྷ༻༁🜛ྉ🜎༻🜎ཪན🝱🜎ཪ۩🜲༫🜤༫ཪ༭ཎ🝱🜛🜪ྉ🜄ཪ🜘🜎🜙༫ཪབྷ🜲۩🜹🜪ྉ🜙🜧🜤༁ན།ཪྉ
+    🜙ᇊ࿔🜙࿈🜓࿈🜜🝙🜀𐤘༓འ🝢🝙🝞࿋༡ཋ࿈🜙🝟🜁༓🜙࿈🝠🝆༓༡🝢🝞ཤ🜜🝟🝟🝙🜜🝠࿔🜜ཤ🜙🝙🜰ᇊ🜰༡🜰🝟🜣༡🝠🜑🜀༥༳༥༡🝆༳🝆🜑༥
 
 Every time it is run the cypher will change:
 
     $ php cli/crypt.php foo
-    🜭ق༰🝌🝌🝊🝣🝢࿒࿎🝌🝇🝊🝉🝲࿎🜧ྉ༴🝅🜦🝡🜧🝊🝣༴🝊🜪ྉ🝊🜭ྉ🝡🜦🝉🜭ྉ🜪🝢🝊🝊🜧༔🜖🝣🜦🜧🜧🝠ྉ🜖𐤎༰🜻🜸🝌𐤎🝣🝇༴🝠🝣🝚🜦
+    🜰🝠༥ཤ༥ᇊ🜁🝠࿋🝢༳🝞𐤘🝢ཋ༥🜙ᇊཋ🜙🝢ཤཋཎཋ🝆འ🜑འ🝢🜣🜙༓༳༓༥࿈༓🜜🝞🝠ཤ༓འ🜰ཤཎ🝞🝢🝟🜁ཋ࿋🜣࿋🝠༳༥🜙ཤ🝞🜣༳🝠
 
 ### Fuzzy String Matching Example
 
@@ -87,15 +87,15 @@ $similarity = $match->similarity($a, $b);
 The following CLI command is available at [`cli/match.php`](https://github.com/programarivm/fuzzy-matching-ope-encryption/blob/master/cli/match.php):
 
     $ php cli/match.php foo boo
-    foo: 🝲🜤🜀🜼ཞ🜳࿏🝲࿏🜀🜳༮ۅ𐤉🝚༯🝥࿔🜳🝞བྷ🜳ཞ༯🝚🝏🝓🜓🝭🝚འ🝥༐🜼🜼🜼🜹🜹🝲༐🝥🜂🝚🝲བྷབྷ𐤉🜭🝲🜭🝏🝞🜀🝂🝲🜂༯🝲🝞༐🝞🜳🝥🝞
-    boo: 🜳ཞ🜭🝲༯🝚𐤉࿔🝭🜭🝲འ𐤉🝥༮࿔🝥🜂🜂ཞཞ༮🝥༐🝂🝞🜀🜼🜤༮ᇏ࿔🝥ྈ🝲🝏🜼🝂🜀࿏🝭🝚🝚࿔🜤ྈ࿏🝲🜼🝂ྈ🝓བྷྈ🜀࿔🝥🝚🝚🝭🝂ྈ🜤༮
+    foo: 🝠༥𐤘࿔࿈🝢🜙🝞࿋࿋🜰࿔🜁ᇊ༡འ🜰🝠࿈🜀🜓༥🝆࿔🜀🜜🜰🜁🜁࿋🝆࿔ᇊ🝞༓🝟࿈🝆ཤཤ🝢༥🜙🝢🜜🜁🜀🜓ཋ🜰🜑ཎཤ🝢🝙༳࿋ཋ🜜🜰༡ཎ༡༡
+    boo: འ🜓🝠🝟࿋🝆འ🜄ᇊཤ🝆🜑༥࿋🝞🜙🜓🝟འ༡༓ཤ🝆࿈🜄ཤ𐤉🝠འཋའ࿋🝙༓࿋🜰🜄༥🝆࿈༡🝆🝞🜁🜰༥🜄༡ᇊ🜁🜙༓🝆🝟ཎཤ🜄🜄🜁༡🜣ཎ🜀࿋
     Similarity: 0.67
 
 Every time it is run the cyphers will change:
 
-    php cli/match.php foo boo
-    foo: ༠🝈འ༠༭𐤎ྈྈ🝈🜷🜧རའ🜌🝈འ🜗🜷འ🜑🜷🜦ྈ🜑🝪ྈ🜕༠🜦🜑🜗🜥ཀྵཀྵ𐤎🜑🝩🝪ཀྵ🜦ྈ🝩འ🜦🜑🜢🝈🝈🝀🜽🜪ར🜗🜪🝪𐤛🝪🜑🜕🜑༭ཀྵ🜗🜕
-    boo: 🜑ཀྵ࿈༭🜧𐤎🝀༭༭🜽🜑ར🜦༭🜑🜕🜢🝩🝪🜒ཀྵ🝈🜕ར𐤎ྈ🜾🜌🜪ར🜗🜪ཀྵ🝩🝈🜪🝀🜢🜌🜑🜌འ🜦ྈ🜾༭🜦🝀🜾🜧🜐🜥🜷🜌🜌🜑ᅺ🜷🝀🜌༭ྈ🜪ར
+    $ php cli/match.php foo boo
+    foo: 🝙༥🝢🜁ཤཎཋ🝠ᇊ🜙༓࿋🝠🝞࿋འ࿋࿈🜙࿔࿔࿈༳🜄𐤘🜣ཎ🜣🝟🝠࿈🝙࿔🜓🜑༥🜁ཋཋ🝢🝞࿔༳འ🜑🜓🜙🝙🜄ᇊ🜓🜀🝢🜙༳༡࿋༓🜑🜁🝟🜙🜀༥
+    boo: 🜓🝟🝟🝢🜰🝢🝠࿈🜁🜄༡🝆🜁🝙🜑འ🜰࿈༳࿈འ🜜ཎ🜰🜰𐤉🝞࿋འཋའ🝞🜜🝢🝠🜜🜄🜁🜓ᇊ🜣ཋ🜓ᇊའ༳🜓🜑🜙🜜࿈࿔🜁🝙🝠🜜🜜༡🝠༳༡࿔🜙🜣
     Similarity: 0.67
 
 ### License
