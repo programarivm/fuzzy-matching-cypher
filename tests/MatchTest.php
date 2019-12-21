@@ -18,9 +18,6 @@ class MatchTest extends TestCase
 
 	public function __construct()
 	{
-		$dotenv = Dotenv::createImmutable(__DIR__.'/../');
-		$dotenv->load();
-
 		$alphabet = new EnglishAlphabet;
 
 		$foreground = new MimickedAlphabet(
