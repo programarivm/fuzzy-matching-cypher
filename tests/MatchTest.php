@@ -2,12 +2,8 @@
 
 namespace FuzzyMatching\Tests;
 
-use Dotenv\Dotenv;
 use FuzzyMatching\Crypt;
 use FuzzyMatching\Match;
-use FuzzyMatching\Alphabet\EnglishAlphabet;
-use FuzzyMatching\Alphabet\FuzzyAlphabet;
-use FuzzyMatching\Alphabet\MimickedAlphabet;
 use PHPUnit\Framework\TestCase;
 
 class MatchTest extends TestCase
@@ -18,7 +14,7 @@ class MatchTest extends TestCase
 
 	public function __construct()
 	{
-		$fuzzyAlphabet = unserialize(file_get_contents(__DIR__ . '/../.fuzzy-alphabet'));
+		$fuzzyAlphabet = unserialize(file_get_contents('.fuzzy-alphabet'));
 		$this->match = new Match($fuzzyAlphabet);
 		$this->crypt = new Crypt($fuzzyAlphabet);
 	}

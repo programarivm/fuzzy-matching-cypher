@@ -1,4 +1,4 @@
 /composer.lock
 /vendor/
+/.fuzzy-alphabet
 .env
-.fuzzy-alphabet
