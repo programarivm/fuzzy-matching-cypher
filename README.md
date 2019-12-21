@@ -4,9 +4,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![Fuzzy Matching OPE Encryption](/resources/square-dot.jpg)
 
-Random Unicode alphabets for approximate string matching with order-preserving encryption (OPE).
-
-This library is useful to perform fuzzy string comparisons on encrypted texts.
+Random Unicode alphabets for approximate string matching with order-preserving encryption (OPE). This library is useful to perform fuzzy string comparisons on encrypted texts.
 
     $ php cli/match.php stjohnrd stjohnroad
     stjohnrd: 🝊༕🜔࿔🜔🝙ྋྋᅺ🜮🜮ྋ🜙🝧🝇ྋྋ🜮🜷🝙ᄓ🜌ྋ࿊࿔🝡🝇🝧🝡ྋ🜮𐤚؎ྋ🜃𐤒ᆷ🜙🜙؍🜷🜷ྋ🜯࿔ᄞྋ༖🝳🜮༕🝳🝙🜷༖ྋྋ🜍༖🜌༪༕🜙༖
@@ -38,7 +36,7 @@ The unicode ranges available can be found at [programarivm/unicode-ranges](https
 
 To generate the `.fuzzy-alphabet` file:
 
-  $ php cli/fuzzy-alphabet.php
+    $ php cli/fuzzy-alphabet.php
 
 ### Encryption Example
 
