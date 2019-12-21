@@ -5,6 +5,12 @@
 
 Random Unicode alphabets for approximate string matching with order-preserving encryption (OPE).
 
+### Install
+
+Via composer:
+
+    $ composer require programarivm/fuzzy-matching-ope-encryption
+
 ### Set up the Environment
 
 Create an `.env` file:
@@ -40,7 +46,12 @@ $crypt->encrypt('foo');
 The following CLI command is available:
 
     $ php cli/crypt.php foo
-    𐤐ᄰᄰ🝋🝏🝁🜾🝐🜾🝮༽🜾࿑🜔🝍ན🜩ཫ🝮🝌🝋༽🝥ཆ༖🜩ཥ࿗གྷ🝍࿑ཆཫ🝨🝍གྷ🝅࿗🝨ཆ🝏🜫🝅🝛🝥🝍🝛࿗🝌🝮🝌ཫཆ🝮࿑🝨ཫ🝏🝁🝮🜫🝋🝨🝏
+    🜄🜎🜤༁བྷདྷབྷ🜎🜧🜹🜄🜛🝱དྷ🜊༁ᇈདྷདྷ༻༁🜛ྉ🜎༻🜎ཪན🝱🜎ཪ۩🜲༫🜤༫ཪ༭ཎ🝱🜛🜪ྉ🜄ཪ🜘🜎🜙༫ཪབྷ🜲۩🜹🜪ྉ🜙🜧🜤༁ན།ཪྉ
+
+Every time the command is run, the fuzzy alphabet is computed from scratch and therefore the cypher will be different:
+
+    $ php cli/crypt.php foo
+    🜭ق༰🝌🝌🝊🝣🝢࿒࿎🝌🝇🝊🝉🝲࿎🜧ྉ༴🝅🜦🝡🜧🝊🝣༴🝊🜪ྉ🝊🜭ྉ🝡🜦🝉🜭ྉ🜪🝢🝊🝊🜧༔🜖🝣🜦🜧🜧🝠ྉ🜖𐤎༰🜻🜸🝌𐤎🝣🝇༴🝠🝣🝚🜦
 
 ### Fuzzy String Matching Example
 

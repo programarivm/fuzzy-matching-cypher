@@ -2,6 +2,7 @@
 
 namespace FuzzyMatching;
 
+use FuzzyMatching\Multibyte;
 use FuzzyMatching\Alphabet\FuzzyAlphabet;
 use FuzzyMatching\Exception\MatchException;
 
@@ -24,20 +25,13 @@ class Match
 			throw new MatchException(self::MAX_STRING_LENGTH);
 		}
 
-		// remove the chars of the background alphabet
-		$backgroundLetters = implode('', $this->fuzzyAlphabet->getBackground()->letters());
-		$str1 = preg_replace("/[$backgroundLetters]/u", '', $str1);
-		$str2 = preg_replace("/[$backgroundLetters]/u", '', $str2);
+		// remove the background alphabet letters
+		$letters = implode('', $this->fuzzyAlphabet->getBackground()->letters());
+		$str1 = preg_replace("/[$letters]/u", '', $str1);
+		$str2 = preg_replace("/[$letters]/u", '', $str2);
 
 		// calculate matches
-		$chars1 = preg_split('//u', $str1, null, PREG_SPLIT_NO_EMPTY);
-		$chars2 = preg_split('//u', $str2, null, PREG_SPLIT_NO_EMPTY);
-		$matches = 0;
-		for ($i=0; $i < count($chars1); $i++) {
-			if (isset($chars1[$i]) && isset($chars2[$i])) {
-				$chars1[$i] == $chars2[$i] ? $matches++ : false;
-			}
-		}
+		$matches = Multibyte::strMatches($str1, $str2);
 
 		// calculate similarity
 		$averageLength = (mb_strlen($str1) + mb_strlen($str2)) / 2;

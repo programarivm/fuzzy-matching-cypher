@@ -3,8 +3,11 @@
 namespace FuzzyMatching;
 
 use FuzzyMatching\Match;
+use FuzzyMatching\Multibyte;
 use FuzzyMatching\Alphabet\FuzzyAlphabet;
 use FuzzyMatching\Exception\CryptException;
+use FuzzyMatching\Exception\MimickedAlphabetException;
+use UnicodeRanges\Randomizer;
 
 class Crypt
 {
@@ -29,7 +32,10 @@ class Crypt
 			$cipher .= $this->fuzzyAlphabet->getForeground()->getLetterFreq()[$char]['char'];
 		}
 
-		return $cipher . $this->fillBackground($cipher);
+		$array = Multibyte::strSplit($cipher.$this->fillBackground($cipher));
+		shuffle($array);
+
+		return implode('', $array);
 	}
 
 	private function fillBackground(string $cipher)
