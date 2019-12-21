@@ -14,7 +14,7 @@ class MatchTest extends TestCase
 
 	public function __construct()
 	{
-		$fuzzyAlphabet = unserialize(file_get_contents('.fuzzy-alphabet'));
+		$fuzzyAlphabet = unserialize(file_get_contents(__DIR__ .'/.fuzzy-alphabet'));
 		$this->match = new Match($fuzzyAlphabet);
 		$this->crypt = new Crypt($fuzzyAlphabet);
 	}
