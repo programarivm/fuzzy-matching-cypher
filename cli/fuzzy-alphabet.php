@@ -17,6 +17,4 @@ $alphabet = new EnglishAlphabet;
 $foreground = new MimickedAlphabet($alphabet, getenv('FUZZY_MATCHING_FOREGROUND_ALPHABET'));
 $background = new MimickedAlphabet($alphabet, getenv('FUZZY_MATCHING_BACKGROUND_ALPHABET'));
 
-$fuzzyAlphabet = new FuzzyAlphabet($foreground, $background);
-
-file_put_contents('.fuzzy-alphabet', serialize($fuzzyAlphabet));
+new FuzzyAlphabet($foreground, $background);

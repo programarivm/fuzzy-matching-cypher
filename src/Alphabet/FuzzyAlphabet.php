@@ -14,6 +14,8 @@ class FuzzyAlphabet
 	{
 		$this->foreground = $foreground;
 		$this->background = $background;
+
+		file_put_contents(__DIR__.'/../../.fuzzy-alphabet', serialize($this));
 	}
 
 	public function getForeground()
