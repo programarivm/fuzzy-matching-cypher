@@ -40,6 +40,7 @@ The following CLI command is available at [`cli/fuzzy-alphabet.php`](https://git
 
 ```php
 <?php
+
 use FuzzyMatching\Crypt;
 
 $fuzzyAlphabet = unserialize(file_get_contents(__DIR__ . '/../.fuzzy-alphabet'));
