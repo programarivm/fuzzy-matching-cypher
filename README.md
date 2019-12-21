@@ -5,6 +5,13 @@
 
 Random Unicode alphabets for approximate string matching with order-preserving encryption (OPE).
 
+This library is useful to perform fuzzy string comparisons on encrypted texts.
+
+    $ php cli/match.php stjohnrd stjohnroad
+    stjohnrd: 🝊༕🜔࿔🜔🝙ྋྋᅺ🜮🜮ྋ🜙🝧🝇ྋྋ🜮🜷🝙ᄓ🜌ྋ࿊࿔🝡🝇🝧🝡ྋ🜮𐤚؎ྋ🜃𐤒ᆷ🜙🜙؍🜷🜷ྋ🜯࿔ᄞྋ༖🝳🜮༕🝳🝙🜷༖ྋྋ🜍༖🜌༪༕🜙༖
+    stjohnroad: 🜃༁𐤒ᅺཔ🝱🝊࿊🝳🜯࿔؍🜌🜃🝡🝧པ༁ྋ🝁༕🝙🝙࿔🝇࿊ᄓ🜃🜯🝇༻༈𐤚པᆷ༈🝡🝡𐤒🜃🜔ᄞ࿔🝧🜃🝇🜌༪🜯🜌🝊༻ᅞ🝙🜮🝱🝱🜌؎🜷🝡🜍࿔༁
+    Similarity: 0.89
+
 ### Install
 
 Via composer:
@@ -17,7 +24,7 @@ Create an `.env` file:
 
     cp .env.example .env
 
-This is the encryption algorithm key consisting in both a foreground alphabet and a background alphabet:
+The file contains the encryption algorithm key consisting in both a foreground alphabet and a background alphabet:
 
     FUZZY_MATCHING_FOREGROUND_ALPHABET="Arabic,HangulJamo,Phoenician"
     FUZZY_MATCHING_BACKGROUND_ALPHABET="AlchemicalSymbols,Tibetan"
@@ -48,12 +55,12 @@ $crypt = new Crypt($fuzzyAlphabet);
 $crypt->encrypt('foo');
 ```
 
-The following CLI command is available:
+The following CLI command is available at [`cli/crypt.php`](https://github.com/programarivm/fuzzy-matching-ope-encryption/blob/master/cli/crypt.php):
 
     $ php cli/crypt.php foo
     🜄🜎🜤༁བྷདྷབྷ🜎🜧🜹🜄🜛🝱དྷ🜊༁ᇈདྷདྷ༻༁🜛ྉ🜎༻🜎ཪན🝱🜎ཪ۩🜲༫🜤༫ཪ༭ཎ🝱🜛🜪ྉ🜄ཪ🜘🜎🜙༫ཪབྷ🜲۩🜹🜪ྉ🜙🜧🜤༁ན།ཪྉ
 
-Every time the command is run, the fuzzy alphabet is computed from scratch and therefore the cypher obtained will change:
+Every time it is run the fuzzy alphabet is computed from scratch and therefore the cypher obtained will change:
 
     $ php cli/crypt.php foo
     🜭ق༰🝌🝌🝊🝣🝢࿒࿎🝌🝇🝊🝉🝲࿎🜧ྉ༴🝅🜦🝡🜧🝊🝣༴🝊🜪ྉ🝊🜭ྉ🝡🜦🝉🜭ྉ🜪🝢🝊🝊🜧༔🜖🝣🜦🜧🜧🝠ྉ🜖𐤎༰🜻🜸🝌𐤎🝣🝇༴🝠🝣🝚🜦
@@ -87,14 +94,14 @@ $b = $crypt->encrypt('boo');
 $match->similarity($a, $b);
 ```
 
-The following CLI command is available:
+The following CLI command is available at [`cli/match.php`](https://github.com/programarivm/fuzzy-matching-ope-encryption/blob/master/cli/match.php):
 
     $ php cli/match.php foo boo
     foo: 🝲🜤🜀🜼ཞ🜳࿏🝲࿏🜀🜳༮ۅ𐤉🝚༯🝥࿔🜳🝞བྷ🜳ཞ༯🝚🝏🝓🜓🝭🝚འ🝥༐🜼🜼🜼🜹🜹🝲༐🝥🜂🝚🝲བྷབྷ𐤉🜭🝲🜭🝏🝞🜀🝂🝲🜂༯🝲🝞༐🝞🜳🝥🝞
     boo: 🜳ཞ🜭🝲༯🝚𐤉࿔🝭🜭🝲འ𐤉🝥༮࿔🝥🜂🜂ཞཞ༮🝥༐🝂🝞🜀🜼🜤༮ᇏ࿔🝥ྈ🝲🝏🜼🝂🜀࿏🝭🝚🝚࿔🜤ྈ࿏🝲🜼🝂ྈ🝓བྷྈ🜀࿔🝥🝚🝚🝭🝂ྈ🜤༮
     Similarity: 0.67
 
-Every time the command is run, the fuzzy alphabets are computed from scratch and therefore the cyphers will change:
+Every time it is run the fuzzy alphabets are computed from scratch and therefore the cyphers will change:
 
     php cli/match.php foo boo
     foo: ༠🝈འ༠༭𐤎ྈྈ🝈🜷🜧རའ🜌🝈འ🜗🜷འ🜑🜷🜦ྈ🜑🝪ྈ🜕༠🜦🜑🜗🜥ཀྵཀྵ𐤎🜑🝩🝪ཀྵ🜦ྈ🝩འ🜦🜑🜢🝈🝈🝀🜽🜪ར🜗🜪🝪𐤛🝪🜑🜕🜑༭ཀྵ🜗🜕
