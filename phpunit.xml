@@ -3,6 +3,10 @@
          colors="true"
          stopOnFailure="false"
          stderr="true">
+  <php>
+    <env name="FUZZY_MATCHING_FOREGROUND_ALPHABET" value="Arabic,HangulJamo,Phoenician" />
+    <env name="FUZZY_MATCHING_BACKGROUND_ALPHABET" value="AlchemicalSymbols,Tibetan"/>
+  </php>
   <testsuites>
     <testsuite name="FuzzyMatching tests">
       <directory>tests</directory>
