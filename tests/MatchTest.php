@@ -263,4 +263,34 @@ class MatchTest extends TestCase
 
 		$this->assertEquals(1, $this->match->similarity($robert1, $robert2));
 	}
+
+	/**
+	 * @test
+	 */
+	public function similarity_stjohnrd_stjohnroad_async_encrypted()
+	{
+		$this->assertEquals(0.89, $this->match->similarity(
+			'࿈🜑؞🜁࿔🜣🜙🜁࿈🝠🜣࿔🜄🝆༡🜙🝞🝠🝟༓🝟🜀🝢🝙ཤ࿈🜰འ🜓ᇊڠᇔ🜑༳༳ཤ༳🝠🜣🝟🝙༳🝠ཤའ🜜༳𐤒༓ᆄ🜀࿔𐤌🜙🝠🜀🝢🝙🝟🜜🜣𐤏🜄࿈',
+			'🜣ཋ🜀༳؞འ🜄࿔🜑🜁🜰འ🝠🝙🜣ཋ🝟༳༥🜰𐤏🝆🜰ཋᆄ🜄࿋ڠ🜜🜰𐤒🜑࿔🜄𐤍🜜🝙🜓🝠𐤌࿈🜣ཋ🜄འᇔ༓ᇊཋ🝆ᇊ🜣🜰འ🜑🝙🜰🜣🜓🜁༡ཋ🜜ཤ'
+		));
+	}
+
+	/**
+	 * @test
+	 */
+	public function similarity_stjohnrd_stjohnrd_async_encrypted()
+	{
+		$this->assertEquals(1, $this->match->similarity(
+			'༥🜣༡ᆄ🝆༳🜑🜣🝙🝞༡🜰འ༥༥🝆ཋ༡🜣🜣༓🜣🜜🝙🜓࿔🝟🝆༡🜙ᇔ🝞ཤ࿔🝙؞🜓࿔ᇊڠཎ🜓🝠🝢🜙🝠🝙࿔🜁🜣𐤏࿈འ🝞𐤒🜜𐤌࿈🜣🜓🜣🜄༓ཎ',
+			'🜓🝞ཤ🜙؞🜰🜓🜑🝢࿋🜄🝟🜰༓🜄ᆄ🜣🜰🜜࿈🜜🝆🜣༡༳🝞🝢࿋🝙🝞🜜༳༳🜀𐤌🜀࿔🜀🜄🝟༳ڠ🜁🜰🝞ཎ🝞🝟࿈𐤒ᇊ🜀🜣🜣🝢ཋཋᇔ🝢𐤏༡ཤ🜙🝆'
+		));
+	}
+
+	public function similarity_stjohnroad_stjohnroad_async_encrypted()
+	{
+		$this->assertEquals(1, $this->match->similarity(
+			'ཎ🝆🜜ཤ🝙࿔𐤒🝆🜜🝟🝞༡ᇔ༡🝢🝢༡༡🜜🜓𐤌🜰ཤ༡🜓ڠᇊ࿔ཤ🜀🜀༓🜙འཤ𐤍🜁🜙༡ཎ🜄؞🝆🜀ᆄ🜙ཎཎཋའ🝙🜜ཎᇊ🝙ཤ🝟࿋𐤏🜣འ🜀འཤ',
+			'🜰🜑🝆🝞🝠ᆄᇊ𐤍𐤏࿔🜄࿋🜁🝠🜑🜰ཎཋཋ🜑༳𐤌🝠🝢༓༓࿔🜑ཤ🝞ཤ🜓🝆࿔🜙🜑🜓འڠ🝞🝆🝢༡🝆࿔🜰ཤ🝢𐤒འ༓ᇔ࿋؞༳࿔🜄ཋᇊ🝟༡🜑🜓🜑'
+		));
+	}
 }
