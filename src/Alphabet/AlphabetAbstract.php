@@ -4,9 +4,11 @@ namespace FuzzyMatching\Alphabet;
 
 use FuzzyMatching\Alphabet;
 
-class AlphabetAbstract implements Alphabet
+abstract class AlphabetAbstract implements Alphabet
 {
 	protected $letterFreq = [];
+
+	abstract protected function calcLetterFreq();
 
 	public function getLetterFreq()
 	{
@@ -27,10 +29,14 @@ class AlphabetAbstract implements Alphabet
 
     public function randLetter()
     {
-        // TODO look at the letter frequency
         $rand = rand(0, count($this->letters()) - 1);
         $letter = $this->letters()[$rand];
 
         return $letter;
     }
+
+	public function hasLetter(string $letter)
+	{
+		return mb_stripos(implode('', $this->letters()), $letter) !== false;
+	}
 }

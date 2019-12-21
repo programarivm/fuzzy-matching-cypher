@@ -6,7 +6,7 @@ use FuzzyMatching\Crypt;
 use FuzzyMatching\Alphabet\EnglishAlphabet;
 use FuzzyMatching\Alphabet\FuzzyAlphabet;
 use FuzzyMatching\Alphabet\MimickedAlphabet;
-use FuzzyMatching\Exception\CryptException;
+use FuzzyMatching\Exception\CypherException;
 use PHPUnit\Framework\TestCase;
 
 class CryptTest extends TestCase
@@ -58,7 +58,7 @@ class CryptTest extends TestCase
 	 */
 	public function encrypt_throw_exception()
 	{
-		$this->expectException(CryptException::class);
+		$this->expectException(CypherException::class);
 
 		$foreground = $background = new MimickedAlphabet($this->alphabet, [
 			new \UnicodeRanges\Range\AlchemicalSymbols,

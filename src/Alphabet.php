@@ -9,4 +9,6 @@ interface Alphabet
     public function letters();
 
     public function randLetter();
+
+    public function hasLetter(string $letter);
 }

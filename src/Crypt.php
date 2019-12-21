@@ -2,17 +2,13 @@
 
 namespace FuzzyMatching;
 
-use FuzzyMatching\Match;
-use FuzzyMatching\Multibyte;
 use FuzzyMatching\Alphabet\FuzzyAlphabet;
-use FuzzyMatching\Exception\CryptException;
+use FuzzyMatching\Exception\CypherException;
 use FuzzyMatching\Exception\MimickedAlphabetException;
 use UnicodeRanges\Randomizer;
 
 class Crypt
 {
-	const MAX_STRING_LENGTH = 32;
-
 	private $fuzzyAlphabet;
 
 	public function __construct(FuzzyAlphabet $fuzzyAlphabet)
@@ -22,8 +18,8 @@ class Crypt
 
 	public function encrypt(string $str)
 	{
-		if (mb_strlen($str) > self::MAX_STRING_LENGTH) {
-			throw new CryptException(self::MAX_STRING_LENGTH);
+		if (mb_strlen($str) > Cypher::MAX_LENGTH_PLAINTEXT) {
+			throw new CypherException();
 		}
 
 		$cipher = '';
@@ -41,7 +37,7 @@ class Crypt
 	private function fillBackground(string $cipher)
 	{
 		$background = '';
-		$nChars = Match::MAX_STRING_LENGTH - mb_strlen($cipher);
+		$nChars = Cypher::LENGTH_TOTAL - mb_strlen($cipher);
 		for ($i = 1; $i <= $nChars; $i++) {
 			$background .= $this->fuzzyAlphabet->getBackground()->randLetter();
 		}

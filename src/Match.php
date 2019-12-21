@@ -4,12 +4,9 @@ namespace FuzzyMatching;
 
 use FuzzyMatching\Multibyte;
 use FuzzyMatching\Alphabet\FuzzyAlphabet;
-use FuzzyMatching\Exception\MatchException;
 
 class Match
 {
-	const MAX_STRING_LENGTH = 64;
-
 	private $fuzzyAlphabet;
 
 	public function __construct(FuzzyAlphabet $fuzzyAlphabet)
@@ -19,12 +16,6 @@ class Match
 
 	public function similarity($str1, $str2)
 	{
-		if (mb_strlen($str1) > self::MAX_STRING_LENGTH) {
-			throw new MatchException(self::MAX_STRING_LENGTH);
-		} elseif (mb_strlen($str2) > self::MAX_STRING_LENGTH) {
-			throw new MatchException(self::MAX_STRING_LENGTH);
-		}
-
 		// remove the background alphabet letters
 		$letters = implode('', $this->fuzzyAlphabet->getBackground()->letters());
 		$str1 = preg_replace("/[$letters]/u", '', $str1);

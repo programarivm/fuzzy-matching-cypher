@@ -10,7 +10,7 @@ class MimickedAlphabet extends AlphabetAbstract
 {
     private $alphabet;
 
-    private $unicodeRanges = [];
+    private $unicodeRanges;
 
     private $excludedLetters;
 
@@ -24,20 +24,7 @@ class MimickedAlphabet extends AlphabetAbstract
         $this->unicodeRanges = $unicodeRanges;
         $this->excludedLetters = $excludedLetters;
 
-        foreach ($this->alphabet->getLetterFreq() as $key => $val) {
-            do {
-                $char = Randomizer::printableChar($this->unicodeRanges);
-            } while ($this->hasLetter($char) || in_array($char, $excludedLetters));
-            $this->letterFreq[$key] = [
-                'char' => $char,
-                'freq' => $val,
-            ];
-        }
-    }
-
-    public function getLetterFreq()
-    {
-        return $this->letterFreq;
+        $this->calcLetterFreq();
     }
 
     public function getUnicodeRanges()
@@ -45,14 +32,21 @@ class MimickedAlphabet extends AlphabetAbstract
         return $this->unicodeRanges;
     }
 
-    public function hasLetter($letter)
+    protected function calcLetterFreq()
     {
-        $letters = $this->letters();
+        foreach ($this->alphabet->getLetterFreq() as $key => $val) {
+            do {
+                $char = Randomizer::printableChar($this->unicodeRanges);
+            } while ($this->hasLetter($char) || in_array($char, $this->excludedLetters));
 
-        return mb_stripos(implode('', $letters), $letter) !== false;
+            $this->letterFreq[$key] = [
+                'char' => $char,
+                'freq' => $val,
+            ];
+        }
     }
 
-    private function availableChars($unicodeRanges) {
+    private function availableChars(array $unicodeRanges) {
         $availableChars = 0;
         foreach ($unicodeRanges as $unicodeRange) {
             foreach ($unicodeRange->chars() as $char) {

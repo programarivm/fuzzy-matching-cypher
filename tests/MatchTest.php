@@ -21,42 +21,6 @@ class MatchTest extends TestCase
 
 	/**
 	 * @test
-	 * @expectedException \FuzzyMatching\Exception\MatchException
-	 */
-	public function similarity_fooo_bar_throws_exception()
-	{
-		$this->match->similarity(
-			'foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo',
-			'bar'
-		);
-	}
-
-	/**
-	 * @test
-	 * @expectedException \FuzzyMatching\Exception\MatchException
-	 */
-	public function similarity_foo_baaar_throws_exception()
-	{
-		$this->match->similarity(
-			'foo',
-			'baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaar'
-		);
-	}
-
-	/**
-	 * @test
-	 * @expectedException \FuzzyMatching\Exception\MatchException
-	 */
-	public function similarity_encrypted_throws_exception()
-	{
-		$this->match->similarity(
-			'🜁🝃🝃🝀🜿🝥🜎🝑🝪🝋🜤🜪🝳🝠🝋🝦🝆🝭🝦🝝🜘🝝🝡🜌🝦🝯🜤🜍🝯🜅🜎🜹🜹🝝🜅🜗🜋🜎🝠🝝🝑🝝🝆🜤🝉🝭🜬🝡🝯🝋🝭🜀🜬🜪🜌🜲🝆🜹🜌🜎🝯🜘🜗🝯🜋🜋🝂🜬🝆🜲🜹🜘🝝🝳🜌🝡🝭🜹🜌🜹',
-			'🝌🜃🜃🝕🝁🜘🜌🜎🝤🝍🜎🜌🜆🜍🝠🝠🜌🜎🝠🝇🜴🜎🝳🜆🝄🜴🜴🝟🝦🝡🜴🜔🜴🝄🝡🝄🝧🜴🜺🝦🜴🝄🜣🝇🝧🜴🝩🝟🝠🝤🝄🜥🜌🝦🝬🜥🜺🝇🝩🜼🜣🜌🝧🝤'
-		);
-	}
-
-	/**
-	 * @test
 	 */
 	public function similarity_foo_bar()
 	{
