@@ -1,6 +1,6 @@
 {
-  "name": "programarivm/fuzzy-matching-ope-encryption",
-  "description": "Approximate string matching with order-preserving encryption.",
+  "name": "programarivm/fuzzy-matching-encrypted",
+  "description": "This library helps you perform fuzzy string comparisons on encrypted texts.",
   "type": "library",
   "license": "GPL-3.0-only",
   "keywords": [
