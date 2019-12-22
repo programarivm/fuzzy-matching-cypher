@@ -1,6 +1,6 @@
 {
   "name": "programarivm/fuzzy-matching-encrypted",
-  "description": "This library helps you perform fuzzy string comparisons on encrypted texts.",
+  "description": "Performs fuzzy string matchings on encrypted texts.",
   "type": "library",
   "license": "GPL-3.0-only",
   "keywords": [

@@ -2,14 +2,9 @@
 
 [![Build Status](https://travis-ci.org/programarivm/fuzzy-matching-encrypted.svg?branch=master)](https://travis-ci.org/programarivm/fuzzy-matching-encrypted)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-![Fuzzy Matching OPE Encryption](/resources/square-dot.jpg)
+![Fuzzy Matching Encrypted](/resources/square-dot.jpg)
 
-This library helps you perform fuzzy string comparisons on encrypted texts.
-
-    $ php cli/match.php stjohnrd stjohnroad
-    stjohnrd: 𐎕ı👔鞌ᇜ⧀⋗āⱳᴅ┄䷈ˌⱯ⡯⦂╄ꓚ꜄⛺⦞㍋⧎♺ᆌ🏋⦓∼꤀ᴞ⊜⧼≂ᴗ⧅⠨ʑ🝍😇ᅹ𐅛㏞⧻⇞ᴑᴰ䷞ᇅᇳ⠦🙀㌺ᄑᆗɵ🖾⢱ᴔ⚏㆚⦣㏾灔ǩ
-    stjohnroad: ݒᄐᴩڿ㍉☗𐎈ˏ⟛📷㎕ᴜƔ┻🝪⏦㍁⛘㏾䷟㆔ˤ﹍😍⦢⣋🜢ᇉꤘݾď⋗⧞⧬┍⟼🐵捺㌭⚧⟟ݭ﹂↨ꜘ˶┌≓⦱┭ᇍ🝞🕑⣔钉ڪ🐦🌆⎓😸ᴟᴭᴌ⤃
-    Similarity: 0.89
+Performs fuzzy string matchings on encrypted texts.
 
 ### Install
 
@@ -52,7 +47,7 @@ $crypt = new Crypt($fuzzyAlphabet);
 $cypher = $crypt->encrypt('foo');
 ```
 
-The following CLI command is available at [`cli/crypt.php`](https://github.com/programarivm/fuzzy-matching-encrypted/blob/master/cli/crypt.php):
+Also the following CLI command is available at [`cli/crypt.php`](https://github.com/programarivm/fuzzy-matching-encrypted/blob/master/cli/crypt.php):
 
     php cli/crypt.php foo
     ◰䱗↓ʭ浆ż毀⧰〨《𐆊艇🖹𐅱ꤙ伫⡻䅗瑮﹎℁䶋㠁🐌⠫⦖㌆餄⇉ŐⱩ🜇🗔ʄ∵㍶࿇〇駙🝳︻⢋ℶ🕝꤂▜ꓜ🏈旰䇮㏰Ⱶ䷿⧘⦇⇦⇱Ś䷔娗ⱳ㹚⠌】č🐫⇴💰🐅㍐
@@ -83,7 +78,7 @@ $b = $crypt->encrypt('boo');
 $similarity = $match->similarity($a, $b);
 ```
 
-The following CLI command is available at [`cli/match.php`](https://github.com/programarivm/fuzzy-matching-encrypted/blob/master/cli/match.php):
+Also the following CLI command is available at [`cli/match.php`](https://github.com/programarivm/fuzzy-matching-encrypted/blob/master/cli/match.php):
 
     php cli/match.php foo boo
     foo: 㩡䷜˱▛꓾㍜塧ꓕ㍸【䷠ŉ㿔㍈📘矺噖⇮㌋ʉ🔜㎬詠㏓蟻◗Ċ䋺◄⡏䤝˓◧㍸ꓷ痲㎕ݶ㌟⦺爩˖𐅪𐅥◳🜕︸🜍˞ᶶ䷥ꓒཫŁꓩ𐆄寕ꓗ㍶䷆⡊㫥📟塿🝏䖃↾⠊˹🜭🜝◯䷯ˏ🌤ⅇ🐩
