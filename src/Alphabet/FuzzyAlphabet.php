@@ -8,18 +8,16 @@ use UnicodeRanges\PowerRanges;
 
 class FuzzyAlphabet
 {
-	private $unicodeRanges;
-
 	private $foreground;
 
 	private $background;
 
 	public function __construct(Alphabet $alphabet)
 	{
-		$this->unicodeRanges = (new PowerRanges)->ranges();
-		shuffle($this->unicodeRanges);
-		$this->foreground = new MimickedAlphabet($alphabet, array_slice($this->unicodeRanges, 0, 127));
-		$this->background = new MimickedAlphabet($alphabet, array_slice($this->unicodeRanges, 128, 254));
+		$unicodeRanges = (new PowerRanges)->ranges();
+		shuffle($unicodeRanges);
+		$this->foreground = new MimickedAlphabet($alphabet, array_slice($unicodeRanges, 0, 127));
+		$this->background = new MimickedAlphabet($alphabet, array_slice($unicodeRanges, 128, 254));
 	}
 
 	public function getForeground()
