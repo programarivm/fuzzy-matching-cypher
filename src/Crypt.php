@@ -87,6 +87,6 @@ class Crypt
             'background' => $background,
         ];
 
-        file_put_contents(__DIR__.'/../.secret', serialize($secret));
+        file_put_contents(__DIR__.'/../.fuzzy-matching-secret', serialize($secret));
 	}
 }

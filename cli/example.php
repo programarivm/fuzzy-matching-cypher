@@ -22,7 +22,7 @@ $english = new EnglishAlphabet;
 $fuzzyAlphabet = new FuzzyAlphabet($english);
 $crypt = new Crypt($fuzzyAlphabet);
 
-$secret = unserialize(file_get_contents(__DIR__ . '/../.secret'));
+$secret = unserialize(file_get_contents(__DIR__ . '/../.fuzzy-matching-secret'));
 $match = new Match($secret);
 
 $pairs = [
@@ -38,6 +38,6 @@ foreach ($pairs as $pair) {
     $b = $crypt->encrypt($pair[1]);
     echo "{$pair[0]} is $a" . PHP_EOL;
     echo "{$pair[1]} is $b" . PHP_EOL;
-    echo 'Similarity is ' . $match->similarity($a, $b) . PHP_EOL;
+    echo 'Similarity ' . $match->similarity($a, $b) . PHP_EOL;
     echo '---------------------------------------------------------------------------------------------' . PHP_EOL;
 }
