@@ -6,12 +6,12 @@ class EnglishAlphabet extends AlphabetAbstract
 {
 	public function __construct()
 	{
-		$this->calcFreq();
+		$this->calcStats();
 	}
 
-	protected function calcFreq()
+	protected function calcStats()
 	{
-		$this->freq = [
+		$this->stats = [
 			'e' => 12.02,
 			't' => 9.10,
 			'a' => 8.12,

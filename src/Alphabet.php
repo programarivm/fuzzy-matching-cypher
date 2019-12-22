@@ -4,5 +4,5 @@ namespace FuzzyMatching;
 
 interface Alphabet
 {
-    public function getFreq();
+    public function getStats();
 }

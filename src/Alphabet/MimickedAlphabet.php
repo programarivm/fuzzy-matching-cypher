@@ -25,7 +25,7 @@ class MimickedAlphabet extends AlphabetAbstract
         $this->excludedLetters = $excludedLetters;
         $this->letters = [];
 
-        $this->calcFreq();
+        $this->calcStats();
     }
 
     public function getUnicodeRanges()
@@ -33,9 +33,9 @@ class MimickedAlphabet extends AlphabetAbstract
         return $this->unicodeRanges;
     }
 
-    protected function calcFreq()
+    protected function calcStats()
     {
-        foreach ($this->alphabet->getFreq() as $key => $val) {
+        foreach ($this->alphabet->getStats() as $key => $val) {
             $chars = [];
             for ($i = 0; $i < Cypher::LENGTH_TOTAL; $i++) {
                 do {
@@ -44,7 +44,7 @@ class MimickedAlphabet extends AlphabetAbstract
                 $chars[] = $char;
                 $this->letters[] = $char;
             }
-            $this->freq[$key] = [
+            $this->stats[$key] = [
                'chars' => $chars,
                'freq' => $val,
            ];
@@ -67,7 +67,7 @@ class MimickedAlphabet extends AlphabetAbstract
     {
         $decoded = '';
         foreach (Multibyte::strSplit($str) as $char) {
-            foreach ($this->freq as $key => $val) {
+            foreach ($this->stats as $key => $val) {
                 if (in_array($char, $val['chars'])) {
                     $decoded .= $key;
                     break;

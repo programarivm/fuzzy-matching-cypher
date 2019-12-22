@@ -6,12 +6,12 @@ use FuzzyMatching\Alphabet;
 
 abstract class AlphabetAbstract implements Alphabet
 {
-	protected $freq = [];
+	protected $stats = [];
 
-	abstract protected function calcFreq();
+	abstract protected function calcStats();
 
-	public function getFreq()
+	public function getStats()
 	{
-		return $this->freq;
+		return $this->stats;
 	}
 }
