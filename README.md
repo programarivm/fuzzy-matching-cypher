@@ -4,7 +4,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![Fuzzy Matching OPE Encryption](/resources/square-dot.jpg)
 
-Random Unicode alphabets for approximate string matching with order-preserving encryption (OPE). This library is useful to perform fuzzy string comparisons on encrypted texts.
+Random Unicode alphabets for approximate string matching with order-preserving encryption (OPE). This library helps you perform fuzzy string comparisons on encrypted texts.
 
     $ php cli/match.php stjohnrd stjohnroad
     stjohnrd: 𐎕ı👔鞌ᇜ⧀⋗āⱳᴅ┄䷈ˌⱯ⡯⦂╄ꓚ꜄⛺⦞㍋⧎♺ᆌ🏋⦓∼꤀ᴞ⊜⧼≂ᴗ⧅⠨ʑ🝍😇ᅹ𐅛㏞⧻⇞ᴑᴰ䷞ᇅᇳ⠦🙀㌺ᄑᆗɵ🖾⢱ᴔ⚏㆚⦣㏾灔ǩ
@@ -36,6 +36,8 @@ The following CLI command is available at [`cli/fuzzy-alphabet.php`](https://git
 
     $ php cli/fuzzy-alphabet.php
 
+> **Important**: The `.fuzzy-alphabet` file must be kept secret.
+
 ### Encryption Example
 
 ```php
@@ -53,12 +55,14 @@ $cypher = $crypt->encrypt('foo');
 The following CLI command is available at [`cli/crypt.php`](https://github.com/programarivm/fuzzy-matching-ope-encryption/blob/master/cli/crypt.php):
 
     php cli/crypt.php foo
-    🜙Čᵾ⢧ż😴Į㍏ㇺ˶˲⠃🗑Ɑ⟚ꜞ⦢⚢⦔ᴨ∁🝟㎜䷥䷰♬∲☞ݥ⛕ᄩ👤😹ⱸ😈ᆕ⤑ᵤᄖᵮᇗ溜🝅🖫ᇓ☗⊾䞓Ꮩ䷪♳Ė﹊⟯😟菚䷾悹ᆬᵜⱰ☋⟦ᆙ
+    ◰䱗↓ʭ浆ż毀⧰〨《𐆊艇🖹𐅱ꤙ伫⡻䅗瑮﹎℁䶋㠁🐌⠫⦖㌆餄⇉ŐⱩ🜇🗔ʄ∵㍶࿇〇駙🝳︻⢋ℶ🕝꤂▜ꓜ🏈旰䇮㏰Ⱶ䷿⧘⦇⇦⇱Ś䷔娗ⱳ㹚⠌】č🐫⇴💰🐅㍐
 
 Every time it is run the cypher will change:
 
     php cli/crypt.php foo
-    蚂ħ😌Ņ⡳🖯ĝ📺⧫沭䷃﹌⟀⦇꤮Ŭ🖋🜽︰﹎♰⟁☄䷚┅≅ᵙ枩😕☌⦗ᅾ⧧ᴚŌᶈ♏⠧◿⏵劂⦂Ɫᵫ⚛ʻᴼ┒ⱱ㏾╁ā⋪😄⟦🕴┻︾⟙⧵ݹ䷹🎲ᆣ
+    艇㏢ℕꤗ྾🎪𐆇ˠ㌁䱁㯸🎪◆🜷ġꓰ㎲剩🎿㪹䑩䥨࿙˾ཆ䷾▜䷮⇡︲ݶ﹎𐅇ź྿KĂķ𐅨ⅇ↵🏤Ł埿Źۆ˓◾㬼༔ⱻ椪Ņ㍲▗🌴䈘▕⟲▊⧣䖚⦭䪣ⱶ𐅵﹍Ȿ℈「︹🍲
+
+> **Note**: The maximum length of the plain text is 32 characters. The cypher has a variable length between 64 and 80 characters.
 
 ### Fuzzy String Matching Example
 
@@ -82,15 +86,15 @@ $similarity = $match->similarity($a, $b);
 The following CLI command is available at [`cli/match.php`](https://github.com/programarivm/fuzzy-matching-ope-encryption/blob/master/cli/match.php):
 
     php cli/match.php foo boo
-    foo: ㎼🌽𐅞🌆∄︹⡽翷㎬ⱻ琳⣈ᄙ🗗⠕ᇜꤐ⟤🖚ㇱ⦗⚯╥⢙⋔ᴣݰ蛡⟍㌟♻⟦ꤛ页ⱦ⠧䷺😱㎧🝃㏎😇﹏┋ᵩ💠🐲⦈᧳🜋꜍⧼Ņ⢟Żĥ┈⧒🝁ᅍ┉བྷ⧺⟡
-    boo: ꜒ᴓ📰꤃🏩🗯⚉⋸ᇸ🎓⧟∫ᇶᵎ⟂ᆃǂ😗鿋⚭😓㍁ۿʌķ🝗🝥ᅬᅌ📵🎒😐ˮ賠┇ⱱ🕴⦳䷲🜞ᵏ≭🗟㎳⚳ᴏᵭď⟑劶👂ᇙ⊲🙏Ⱬݻ∣╟㎌⚫⦨🝍傃㎯
+    foo: 㩡䷜˱▛꓾㍜塧ꓕ㍸【䷠ŉ㿔㍈📘矺噖⇮㌋ʉ🔜㎬詠㏓蟻◗Ċ䋺◄⡏䤝˓◧㍸ꓷ痲㎕ݶ㌟⦺爩˖𐅪𐅥◳🜕︸🜍˞ᶶ䷥ꓒཫŁꓩ𐆄寕ꓗ㍶䷆⡊㫥📟塿🝏䖃↾⠊˹🜭🜝◯䷯ˏ🌤ⅇ🐩
+    boo: į⡹䷸ˑ䌽Ⱨཎ⠲搂˷ź🙸🙭˷㍋ⅇ⇨⦪㖹▲Ž№ཫ◵ㇰ䷖⇨🏈⡝ĥŖʹⱴ⇡🐫ℬ㏣ʺ▓㍔䷆⅃䷹∬⠝㜨⣠㏖Ĳ⟃䩃⇳䷝㎂覡🕡⧗䷽⇟🗓㮐ཋ🔃⣾Ɫ🙘
     Similarity: 0.67
 
 Every time it is run the cyphers will change:
 
     php cli/match.php foo boo
-    foo: Č😔᧿ġ∼⢟㍫ꤓ㏭ė╓ᄋ˒˴縧䷞⛆⣸🖎缉ą㍿栀⋳ᑞ蝞⋋ĥ⊫ᅥĥ🌎ⱪⱶ⢃唵˱Ĕ⧢ᆯˡ⧧╟ũ╯⧹ʹ≆ˢ⡛😦⧇襼♒﹊🕃⦉ⱬʳž㎡Ń🖼ȩ
-    boo: ˌ♧⡊💽∬🌽≚⧷⛕ꤕᅃᄜᆯ😿胩☃┩䷌Ű䷒⡘⟟🗸ᙁ⣈♖ⱼ🏦㍦⦐⟈ⱽ╨ŎŃ╆㌄⧀ㇹʴ😗☫㍲ᆃ☄㎇Ŭ˘🏦🕹Ꭸ漾⛝ʈᵗݗ⡳⧌∄⡩⦎┞ᵜ╻
+    foo: 🜽🙗˯𐅆⦑🙗𐆂䷆▇䷜⢝㏙↑䷓💨ℇ⦼˚℄🗲䷄︾🝓䷽塿䷯▴㝦◜㭂⟣腸㍍噖Ⱪݿ︷〦ℊ🜱㕎㌁˅﹉꤇༉༻䀨伫Ȏ䚣⣡🜷ˏ⢉〱ꓝ𐅋㍙⢝⡝䇒爩ℏ⦴䦪
+    boo: 🌴㏶🐌ꓴ㌖Ģ⅄Č📎㠁⡃⢩䶋Đ㌤㏰🝂㍙🜲↟˙⅏༥🙣ℭ࿙🝗ڍ🕹⇦Ɀ🝍〝䤉㌒⠊︷🙫ⅎ㏕⇭ş℮🍊▝İĀ˯ⱷ釞㌀ར𐅗⛕⟃▯🙿橙↛䷆㍦🜷ꤢ🜄鱠◂↯㮊㍛
     Similarity: 0.67
 
 ### License
