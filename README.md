@@ -44,7 +44,7 @@ Via composer:
 
 ### Generate the Fuzzy Matching Secret
 
-A `Crypt` object is responsible for generating the `.fuzzy-matching-secret` serialized object -- arguably something similar to an encryption key -- which is required to perform the string comparisons.
+A `Crypt` object is responsible for generating the `.fuzzy-matching-secret` -- a serialized object, arguably something similar to an encryption key -- which is required to perform the string comparisons.
 
 ```php
 <?php
@@ -59,9 +59,11 @@ $crypt = new Crypt($fuzzyAlphabet);
 $crypt->writeSecret(); // generates a new .fuzzy-matching-secret file
 ```
 
-As its name implies the `.fuzzy-matching-secret` file must be kept secret.
+Every time a `Crypt` object is instantiated, a new secret is created too. As its name implies the `.fuzzy-matching-secret` file must be kept secret.
 
 ### Encryption
+
+Once the secret is created we're ready to encrypt as many plaintexts as we want:
 
 ```php
 <?php
@@ -72,7 +74,7 @@ $b = $crypt->encrypt('bar');
 $c = $crypt->encrypt('foobar');
 ```
 
-Ciphertexts can be stored into a text file or database for further analysis. The maximum length of the plain text is 32 characters, and the cypher is 64 characters length.
+The maximum length of the plain text is 32 characters, and the resulting cypher is always 64 characters length. Ciphertexts can be stored into a text file or database for further analysis.
 
 Same plaintexts produce different ciphertexts.
 
@@ -85,7 +87,9 @@ Same plaintexts produce different ciphertexts.
 $secret = unserialize(file_get_contents(__DIR__ . '/../.fuzzy-matching-secret'));
 $match = new Match($secret);
 
-$similarity = $match->similarity($a, $b)
+// of course the $a and $b values must be fetched first for comparison
+
+$similarity = $match->similarity($a, $b);
 ```
 
 ### License
