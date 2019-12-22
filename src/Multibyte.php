@@ -22,7 +22,7 @@ class Multibyte
 		return $this->arrMatches($array1, $array2);
 	}
 
-	public function arrMatches(array $array1, array $array2)
+	public static function arrMatches(array $array1, array $array2)
 	{
 		$matches = [];
 		foreach ($array1 as $key => $val) {
