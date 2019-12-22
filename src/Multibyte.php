@@ -16,9 +16,15 @@ class Multibyte
 
 	public static function strMatches(string $text1, string $text2): int
 	{
-		$matches = [];
 		$array1 = self::arraySort(self::strSplit($text1));
 		$array2 = self::arraySort(self::strSplit($text2));
+
+		return $this->arrMatches($array1, $array2);
+	}
+
+	public function arrMatches(array $array1, array $array2)
+	{
+		$matches = [];
 		foreach ($array1 as $key => $val) {
 			if (array_key_exists($key, $array2)) {
 				$array1[$key] >= $array2[$key] ? $matches[$key] = $array2[$key] : $matches[$key] = $array1[$key];

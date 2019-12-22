@@ -1,6 +1,8 @@
 <?php
 
-namespace FuzzyMatching\Alphabet;
+namespace FuzzyMatching\Alphabet\Real;
+
+use FuzzyMatching\Alphabet\AlphabetAbstract;
 
 class EnglishAlphabet extends AlphabetAbstract
 {

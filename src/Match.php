@@ -7,32 +7,57 @@ use FuzzyMatching\Alphabet\FuzzyAlphabet;
 
 class Match
 {
-	private $crypt;
+	private $secret;
 
-	public function __construct(Crypt $crypt)
+	public function __construct($secret)
 	{
-		$this->crypt = $crypt;
+		$this->secret = $secret;
 	}
 
 	public function similarity(string $str1, string $str2)
 	{
-		// remove the background alphabet
-		$str1 = implode('', $this->crypt->getFuzzyAlphabet()->foreground(Multibyte::strSplit($str1)));
-		$str2 = implode('', $this->crypt->getFuzzyAlphabet()->foreground(Multibyte::strSplit($str2)));
-
-		// decrypt the strings
-		// TODO remove decryption
-		$stats = $this->crypt->getFuzzyAlphabet()->getForeground()->getStats();
-		$str1Decoded = $this->crypt->decrypt($str1, $stats);
-		$str2Decoded = $this->crypt->decrypt($str2, $stats);
+		// remove the background noise
+		$a = $this->extractForeground(Multibyte::strSplit($str1));
+		$b = $this->extractForeground(Multibyte::strSplit($str2));
 
 		// calculate matches
-		$matches = Multibyte::strMatches($str1Decoded, $str2Decoded);
+		$matches = Multibyte::arrMatches($this->count($a), $this->count($b));
 
 		// calculate similarity
-		$averageLength = (mb_strlen($str1Decoded) + mb_strlen($str2Decoded)) / 2;
+		$averageLength = (count($a) + count($b)) / 2;
 		$similarity = $matches / $averageLength;
 
 		return round($similarity, 2);
+	}
+
+	private function extractForeground(array $array)
+	{
+		foreach ($this->secret->background as $keyB => $valB) {
+			foreach ($valB as $char) {
+				foreach ($array as $keyA => $valA) {
+					if ($char == $valA) {
+						unset($array[$keyA]);
+					}
+				}
+			}
+		}
+
+		return $array;
+	}
+
+	private function count(array $array)
+	{
+		$count = [];
+		foreach ($this->secret->foreground as $keyF => $valF) {
+			foreach ($valF as $char) {
+				foreach ($array as $keyA => $valA) {
+					if ($char == $valA) {
+						!isset($count[$keyF]) ? $count[$keyF] = 1 : $count[$keyF] += 1;
+					}
+				}
+			}
+		}
+
+		return $count;
 	}
 }

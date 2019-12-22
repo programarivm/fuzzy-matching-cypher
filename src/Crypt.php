@@ -14,6 +14,8 @@ class Crypt
 	public function __construct(FuzzyAlphabet $fuzzyAlphabet)
 	{
 		$this->fuzzyAlphabet = $fuzzyAlphabet;
+
+		$this->writeSecret();
 	}
 
 	public function getFuzzyAlphabet()
@@ -63,5 +65,28 @@ class Crypt
 		}
 
 		return $background;
+	}
+
+	private function writeSecret()
+	{
+		$foreground = [];
+        foreach ($this->fuzzyAlphabet->getForeground()->getStats() as $key => $value) {
+            $foreground[] = $value['chars'];
+        }
+
+        $background = [];
+        foreach ($this->fuzzyAlphabet->getBackground()->getStats() as $key => $value) {
+            $background[] = $value['chars'];
+        }
+
+        shuffle($foreground);
+        shuffle($background);
+
+        $secret = (object) [
+            'foreground' => $foreground,
+            'background' => $background,
+        ];
+
+        file_put_contents(__DIR__.'/../.secret', serialize($secret));
 	}
 }

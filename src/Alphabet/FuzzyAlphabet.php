@@ -16,13 +16,10 @@ class FuzzyAlphabet
 
 	public function __construct(Alphabet $alphabet)
 	{
-		// get 255 unicode ranges
 		$this->unicodeRanges = (new PowerRanges)->ranges();
 		shuffle($this->unicodeRanges);
 		$this->foreground = new MimickedAlphabet($alphabet, array_slice($this->unicodeRanges, 0, 127));
 		$this->background = new MimickedAlphabet($alphabet, array_slice($this->unicodeRanges, 128, 254));
-
-		file_put_contents(__DIR__.'/../../.fuzzy-alphabet', serialize($this));
 	}
 
 	public function getForeground()
@@ -33,18 +30,5 @@ class FuzzyAlphabet
 	public function getBackground()
 	{
 		return $this->background;
-	}
-
-	public function foreground(array $arr)
-	{
-		foreach ($this->getBackground()->letters() as $keyB => $valB) {
-			foreach ($arr as $keyA => $valA) {
-				if ($valB == $valA) {
-					unset($arr[$keyA]);
-				}
-			}
-		}
-
-		return $arr;
 	}
 }
