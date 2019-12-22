@@ -14,7 +14,7 @@ Via composer:
 
 ### Generate the Fuzzy Alphabet
 
-This is how to generate the `.fuzzy-alphabet` serialized object:
+This is how to generate the `.fuzzy-alphabet` serialized object, which is something similar to an encryption key.
 
 ```php
 <?php
@@ -70,8 +70,17 @@ $similarity = $match->similarity($a, $b);
 
 ### CLI Examples
 
-- [`cli/crypt.php`](https://github.com/programarivm/fuzzy-matching-encrypted/blob/master/cli/crypt.php)
-- [`cli/match.php`](https://github.com/programarivm/fuzzy-matching-encrypted/blob/master/cli/match.php)
+#### [`cli/crypt.php`](https://github.com/programarivm/fuzzy-matching-encrypted/blob/master/cli/crypt.php)
+
+    php cli/crypt.php foo
+    𐀛ᥙమﻸ𓆨𐙋ᏏᏣ䷐𐍘𝅚𐅖𐚼᳁𐌂ꫥ𓅡𓎳㏂𖬒𖬫⊝ℯ⺺𝄖﹪ⴗ𝈌≨⿸ꚷįᇫ🃄𑘕㌄ꤑᱠ◞🀄ꤤ簲㍧𐰮𖭞ⶃ𓇸Ġᇝퟋ𐮋𝇜😅⅚繰ర∉Ⲁ❴𑅱➄🡓𒌞╨
+
+#### [`cli/match.php`](https://github.com/programarivm/fuzzy-matching-encrypted/blob/master/cli/match.php)
+
+    php cli/match.php foo boo
+    foo: 𝇜𐒀ꏐ𑅗ߛ🂡ꀺₗ𒐮😼𝄈⦒🂺ꩱ夐Ď𐡲𐅮ޔ𝅌𐄙﹖ᣅ𝅈𐛽𑖣𐒛㊔܂😲烞ސ⸖₄⊸𒑐𐔗ݻⶔ𒑀𝇐Ⴛᗊꥃ𝈒ᨢᣣ𐀥㇕𑈹𝟖≴𝓯⚥ㇷዔ🙎ᅼ𝃆ᥗ𐃕⧭鲤𑛁
+    boo: 𐂵꤁אָꫣ𑖋🁭ᇯ𐭿𐁓𒂰𑇒ꤖ𐄰🡲ᣬ𑖓𝂡𐡷⮑⤐𒑬⻞Åꬫ⺴𖼇𐄓ᖭᝈᱴ𐘕Ⴐㇷ𝗵𑆲─⛇Ꮇ𐰚ꚿ𝔥ங❋ⴑĳ⸅㇇𓆍∬𝈹㊙𐒁𐐈𐂓⥧⻪♞ఌ秧ᇠ𓍏🙙🚄𑃦
+    Similarity: 0.67
 
 ### License
 
