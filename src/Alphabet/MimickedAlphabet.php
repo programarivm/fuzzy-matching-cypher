@@ -37,7 +37,7 @@ class MimickedAlphabet extends AlphabetAbstract
     {
         foreach ($this->alphabet->getStats() as $key => $val) {
             $chars = [];
-            for ($i = 0; $i < Cypher::LENGTH_TOTAL; $i++) {
+            for ($i = 0; $i < Cypher::LENGTH_TOTAL * 4; $i++) {
                 do {
                     $char = Randomizer::printableChar($this->unicodeRanges);
                 } while (in_array($char, $this->letters) || in_array($char, $this->excludedLetters));

@@ -37,8 +37,7 @@ class Crypt
 	private function fillBackground(string $cipher)
 	{
 		$background = '';
-		$length = Cypher::LENGTH_TOTAL - mb_strlen($cipher) + rand(0, Cypher::LENGTH_VARIABLE);
-
+		$length = Cypher::LENGTH_TOTAL - mb_strlen($cipher);
 		for ($i = 1; $i <= $length; $i++) {
 			$background .= $this->fuzzyAlphabet->getBackground()->randLetter();
 		}
