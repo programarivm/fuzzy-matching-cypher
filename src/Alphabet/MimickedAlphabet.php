@@ -62,19 +62,4 @@ class MimickedAlphabet extends AlphabetAbstract
 
         return $this->letters[0];
     }
-
-    public function decode(string $str)
-    {
-        $decoded = '';
-        foreach (Multibyte::strSplit($str) as $char) {
-            foreach ($this->stats as $key => $val) {
-                if (in_array($char, $val['chars'])) {
-                    $decoded .= $key;
-                    break;
-                }
-            }
-        }
-
-        return $decoded;
-    }
 }

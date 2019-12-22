@@ -7,7 +7,7 @@ use FuzzyMatching\Alphabet\FuzzyAlphabet;
 
 class Match
 {
-	private $fuzzyAlphabet;
+	//private $fuzzyAlphabet;
 
 	public function __construct(FuzzyAlphabet $fuzzyAlphabet)
 	{
@@ -21,9 +21,11 @@ class Match
 		$str1 = preg_replace("/[$letters]/u", '', $str1);
 		$str2 = preg_replace("/[$letters]/u", '', $str2);
 
-		// decode the strings
-		$str1Decoded = $this->fuzzyAlphabet->getForeground()->decode($str1);
-		$str2Decoded = $this->fuzzyAlphabet->getForeground()->decode($str2);
+		// decrypt the strings
+		// TODO remove decryption
+		$crypt = new Crypt;
+		$str1Decoded = $crypt->decrypt($str1);
+		$str2Decoded = $$crypt->decrypt($str2);
 
 		// calculate matches
 		$matches = Multibyte::strMatches($str1Decoded, $str2Decoded);
