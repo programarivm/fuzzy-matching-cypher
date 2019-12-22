@@ -7,8 +7,8 @@
 Random Unicode alphabets for approximate string matching with order-preserving encryption (OPE). This library is useful to perform fuzzy string comparisons on encrypted texts.
 
     $ php cli/match.php stjohnrd stjohnroad
-    stjohnrd: 🝊༕🜔࿔🜔🝙ྋྋᅺ🜮🜮ྋ🜙🝧🝇ྋྋ🜮🜷🝙ᄓ🜌ྋ࿊࿔🝡🝇🝧🝡ྋ🜮𐤚؎ྋ🜃𐤒ᆷ🜙🜙؍🜷🜷ྋ🜯࿔ᄞྋ༖🝳🜮༕🝳🝙🜷༖ྋྋ🜍༖🜌༪༕🜙༖
-    stjohnroad: 🜃༁𐤒ᅺཔ🝱🝊࿊🝳🜯࿔؍🜌🜃🝡🝧པ༁ྋ🝁༕🝙🝙࿔🝇࿊ᄓ🜃🜯🝇༻༈𐤚པᆷ༈🝡🝡𐤒🜃🜔ᄞ࿔🝧🜃🝇🜌༪🜯🜌🝊༻ᅞ🝙🜮🝱🝱🜌؎🜷🝡🜍࿔༁
+    stjohnrd: 𐎕ı👔鞌ᇜ⧀⋗āⱳᴅ┄䷈ˌⱯ⡯⦂╄ꓚ꜄⛺⦞㍋⧎♺ᆌ🏋⦓∼꤀ᴞ⊜⧼≂ᴗ⧅⠨ʑ🝍😇ᅹ𐅛㏞⧻⇞ᴑᴰ䷞ᇅᇳ⠦🙀㌺ᄑᆗɵ🖾⢱ᴔ⚏㆚⦣㏾灔ǩ
+    stjohnroad: ݒᄐᴩڿ㍉☗𐎈ˏ⟛📷㎕ᴜƔ┻🝪⏦㍁⛘㏾䷟㆔ˤ﹍😍⦢⣋🜢ᇉꤘݾď⋗⧞⧬┍⟼🐵捺㌭⚧⟟ݭ﹂↨ꜘ˶┌≓⦱┭ᇍ🝞🕑⣔钉ڪ🐦🌆⎓😸ᴟᴭᴌ⤃
     Similarity: 0.89
 
 ### Install
@@ -52,13 +52,13 @@ $cypher = $crypt->encrypt('foo');
 
 The following CLI command is available at [`cli/crypt.php`](https://github.com/programarivm/fuzzy-matching-ope-encryption/blob/master/cli/crypt.php):
 
-    $ php cli/crypt.php foo
-    🜙ᇊ࿔🜙࿈🜓࿈🜜🝙🜀𐤘༓འ🝢🝙🝞࿋༡ཋ࿈🜙🝟🜁༓🜙࿈🝠🝆༓༡🝢🝞ཤ🜜🝟🝟🝙🜜🝠࿔🜜ཤ🜙🝙🜰ᇊ🜰༡🜰🝟🜣༡🝠🜑🜀༥༳༥༡🝆༳🝆🜑༥
+    php cli/crypt.php foo
+    🜙Čᵾ⢧ż😴Į㍏ㇺ˶˲⠃🗑Ɑ⟚ꜞ⦢⚢⦔ᴨ∁🝟㎜䷥䷰♬∲☞ݥ⛕ᄩ👤😹ⱸ😈ᆕ⤑ᵤᄖᵮᇗ溜🝅🖫ᇓ☗⊾䞓Ꮩ䷪♳Ė﹊⟯😟菚䷾悹ᆬᵜⱰ☋⟦ᆙ
 
 Every time it is run the cypher will change:
 
-    $ php cli/crypt.php foo
-    🜰🝠༥ཤ༥ᇊ🜁🝠࿋🝢༳🝞𐤘🝢ཋ༥🜙ᇊཋ🜙🝢ཤཋཎཋ🝆འ🜑འ🝢🜣🜙༓༳༓༥࿈༓🜜🝞🝠ཤ༓འ🜰ཤཎ🝞🝢🝟🜁ཋ࿋🜣࿋🝠༳༥🜙ཤ🝞🜣༳🝠
+    php cli/crypt.php foo
+    蚂ħ😌Ņ⡳🖯ĝ📺⧫沭䷃﹌⟀⦇꤮Ŭ🖋🜽︰﹎♰⟁☄䷚┅≅ᵙ枩😕☌⦗ᅾ⧧ᴚŌᶈ♏⠧◿⏵劂⦂Ɫᵫ⚛ʻᴼ┒ⱱ㏾╁ā⋪😄⟦🕴┻︾⟙⧵ݹ䷹🎲ᆣ
 
 ### Fuzzy String Matching Example
 
@@ -81,16 +81,16 @@ $similarity = $match->similarity($a, $b);
 
 The following CLI command is available at [`cli/match.php`](https://github.com/programarivm/fuzzy-matching-ope-encryption/blob/master/cli/match.php):
 
-    $ php cli/match.php foo boo
-    foo: 🝠༥𐤘࿔࿈🝢🜙🝞࿋࿋🜰࿔🜁ᇊ༡འ🜰🝠࿈🜀🜓༥🝆࿔🜀🜜🜰🜁🜁࿋🝆࿔ᇊ🝞༓🝟࿈🝆ཤཤ🝢༥🜙🝢🜜🜁🜀🜓ཋ🜰🜑ཎཤ🝢🝙༳࿋ཋ🜜🜰༡ཎ༡༡
-    boo: འ🜓🝠🝟࿋🝆འ🜄ᇊཤ🝆🜑༥࿋🝞🜙🜓🝟འ༡༓ཤ🝆࿈🜄ཤ𐤉🝠འཋའ࿋🝙༓࿋🜰🜄༥🝆࿈༡🝆🝞🜁🜰༥🜄༡ᇊ🜁🜙༓🝆🝟ཎཤ🜄🜄🜁༡🜣ཎ🜀࿋
+    php cli/match.php foo boo
+    foo: ㎼🌽𐅞🌆∄︹⡽翷㎬ⱻ琳⣈ᄙ🗗⠕ᇜꤐ⟤🖚ㇱ⦗⚯╥⢙⋔ᴣݰ蛡⟍㌟♻⟦ꤛ页ⱦ⠧䷺😱㎧🝃㏎😇﹏┋ᵩ💠🐲⦈᧳🜋꜍⧼Ņ⢟Żĥ┈⧒🝁ᅍ┉བྷ⧺⟡
+    boo: ꜒ᴓ📰꤃🏩🗯⚉⋸ᇸ🎓⧟∫ᇶᵎ⟂ᆃǂ😗鿋⚭😓㍁ۿʌķ🝗🝥ᅬᅌ📵🎒😐ˮ賠┇ⱱ🕴⦳䷲🜞ᵏ≭🗟㎳⚳ᴏᵭď⟑劶👂ᇙ⊲🙏Ⱬݻ∣╟㎌⚫⦨🝍傃㎯
     Similarity: 0.67
 
 Every time it is run the cyphers will change:
 
-    $ php cli/match.php foo boo
-    foo: 🝙༥🝢🜁ཤཎཋ🝠ᇊ🜙༓࿋🝠🝞࿋འ࿋࿈🜙࿔࿔࿈༳🜄𐤘🜣ཎ🜣🝟🝠࿈🝙࿔🜓🜑༥🜁ཋཋ🝢🝞࿔༳འ🜑🜓🜙🝙🜄ᇊ🜓🜀🝢🜙༳༡࿋༓🜑🜁🝟🜙🜀༥
-    boo: 🜓🝟🝟🝢🜰🝢🝠࿈🜁🜄༡🝆🜁🝙🜑འ🜰࿈༳࿈འ🜜ཎ🜰🜰𐤉🝞࿋འཋའ🝞🜜🝢🝠🜜🜄🜁🜓ᇊ🜣ཋ🜓ᇊའ༳🜓🜑🜙🜜࿈࿔🜁🝙🝠🜜🜜༡🝠༳༡࿔🜙🜣
+    php cli/match.php foo boo
+    foo: Č😔᧿ġ∼⢟㍫ꤓ㏭ė╓ᄋ˒˴縧䷞⛆⣸🖎缉ą㍿栀⋳ᑞ蝞⋋ĥ⊫ᅥĥ🌎ⱪⱶ⢃唵˱Ĕ⧢ᆯˡ⧧╟ũ╯⧹ʹ≆ˢ⡛😦⧇襼♒﹊🕃⦉ⱬʳž㎡Ń🖼ȩ
+    boo: ˌ♧⡊💽∬🌽≚⧷⛕ꤕᅃᄜᆯ😿胩☃┩䷌Ű䷒⡘⟟🗸ᙁ⣈♖ⱼ🏦㍦⦐⟈ⱽ╨ŎŃ╆㌄⧀ㇹʴ😗☫㍲ᆃ☄㎇Ŭ˘🏦🕹Ꭸ漾⛝ʈᵗݗ⡳⧌∄⡩⦎┞ᵜ╻
     Similarity: 0.67
 
 ### License
