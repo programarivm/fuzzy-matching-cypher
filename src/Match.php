@@ -2,8 +2,8 @@
 
 namespace FuzzyMatching;
 
-use FuzzyMatching\Multibyte;
 use FuzzyMatching\Alphabet\FuzzyAlphabet;
+use UnicodeRanges\Utils\Multibyte;
 
 class Match
 {

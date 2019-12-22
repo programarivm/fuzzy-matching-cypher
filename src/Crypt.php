@@ -6,6 +6,7 @@ use FuzzyMatching\Alphabet\FuzzyAlphabet;
 use FuzzyMatching\Exception\CypherException;
 use FuzzyMatching\Exception\MimickedAlphabetException;
 use UnicodeRanges\Randomizer;
+use UnicodeRanges\Utils\Multibyte;
 
 class Crypt
 {

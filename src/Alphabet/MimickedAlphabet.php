@@ -4,9 +4,9 @@ namespace FuzzyMatching\Alphabet;
 
 use FuzzyMatching\Alphabet;
 use FuzzyMatching\Cypher;
-use FuzzyMatching\Multibyte;
 use FuzzyMatching\Exception\MimickedAlphabetException;
 use UnicodeRanges\Randomizer;
+use UnicodeRanges\Utils\Multibyte;
 
 class MimickedAlphabet extends AlphabetAbstract
 {
