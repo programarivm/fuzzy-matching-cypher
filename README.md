@@ -60,7 +60,7 @@ use FuzzyMatching\Match;
 $fuzzyAlphabet = unserialize(file_get_contents(__DIR__ . '/../.fuzzy-alphabet'));
 
 $crypt = new Crypt($fuzzyAlphabet);
-$match = new Match($fuzzyAlphabet);
+$match = new Match($crypt);
 
 $a = $crypt->encrypt('foo');
 $b = $crypt->encrypt('boo');
