@@ -21,6 +21,7 @@ class Match
 		$str1 = preg_replace("/[$letters]/u", '', $str1);
 		$str2 = preg_replace("/[$letters]/u", '', $str2);
 
+		// TODO
 		// calculate matches
 		$matches = Multibyte::strMatches($str1, $str2);
 

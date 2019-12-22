@@ -25,7 +25,7 @@ class Crypt
 		$cipher = '';
 		$chars = str_split($str);
 		foreach ($chars as $char) {
-			$cipher .= $this->fuzzyAlphabet->getForeground()->getLetterFreq()[$char]['char'];
+			$cipher .= $this->fuzzyAlphabet->getForeground()->getFreq()[$char]['chars'][rand(0,Cypher::LENGTH_TOTAL-1)];
 		}
 
 		$array = Multibyte::strSplit($cipher.$this->fillBackground($cipher));
@@ -38,6 +38,7 @@ class Crypt
 	{
 		$background = '';
 		$nChars = Cypher::LENGTH_TOTAL - mb_strlen($cipher);
+
 		for ($i = 1; $i <= $nChars; $i++) {
 			$background .= $this->fuzzyAlphabet->getBackground()->randLetter();
 		}

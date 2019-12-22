@@ -6,37 +6,12 @@ use FuzzyMatching\Alphabet;
 
 abstract class AlphabetAbstract implements Alphabet
 {
-	protected $letterFreq = [];
+	protected $freq = [];
 
-	abstract protected function calcLetterFreq();
+	abstract protected function calcFreq();
 
-	public function getLetterFreq()
+	public function getFreq()
 	{
-		return $this->letterFreq;
-	}
-
-	public function letters()
-    {
-        $letters = array_map(
-            function ($char) {
-                return $char['char'];
-            },
-            $this->letterFreq
-        );
-
-        return array_values($letters);
-    }
-
-    public function randLetter()
-    {
-        $rand = rand(0, count($this->letters()) - 1);
-        $letter = $this->letters()[$rand];
-
-        return $letter;
-    }
-
-	public function hasLetter(string $letter)
-	{
-		return mb_stripos(implode('', $this->letters()), $letter) !== false;
+		return $this->freq;
 	}
 }

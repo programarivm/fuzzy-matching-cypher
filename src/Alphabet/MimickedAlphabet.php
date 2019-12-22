@@ -3,6 +3,8 @@
 namespace FuzzyMatching\Alphabet;
 
 use FuzzyMatching\Alphabet;
+use FuzzyMatching\Cypher;
+use FuzzyMatching\Multibyte;
 use FuzzyMatching\Exception\MimickedAlphabetException;
 use UnicodeRanges\Randomizer;
 
@@ -14,17 +16,16 @@ class MimickedAlphabet extends AlphabetAbstract
 
     private $excludedLetters;
 
+    private $letters;
+
     public function __construct(Alphabet $alphabet, array $unicodeRanges, array $excludedLetters = [])
     {
-        if (($this->availableChars($unicodeRanges) - count($excludedLetters)) < count($alphabet->getLetterFreq())) {
-            throw new MimickedAlphabetException('Whoops! There are no characters left to mimic the alphabet.');
-        }
-
         $this->alphabet = $alphabet;
         $this->unicodeRanges = $unicodeRanges;
         $this->excludedLetters = $excludedLetters;
+        $this->letters = [];
 
-        $this->calcLetterFreq();
+        $this->calcFreq();
     }
 
     public function getUnicodeRanges()
@@ -32,30 +33,33 @@ class MimickedAlphabet extends AlphabetAbstract
         return $this->unicodeRanges;
     }
 
-    protected function calcLetterFreq()
+    protected function calcFreq()
     {
-        foreach ($this->alphabet->getLetterFreq() as $key => $val) {
-            do {
-                $char = Randomizer::printableChar($this->unicodeRanges);
-            } while ($this->hasLetter($char) || in_array($char, $this->excludedLetters));
-
-            $this->letterFreq[$key] = [
-                'char' => $char,
-                'freq' => $val,
-            ];
+        foreach ($this->alphabet->getFreq() as $key => $val) {
+            $chars = [];
+            for ($i = 0; $i < Cypher::LENGTH_TOTAL; $i++) {
+                do {
+                    $char = Randomizer::printableChar($this->unicodeRanges);
+                } while (in_array($char, $this->letters) || in_array($char, $this->excludedLetters));
+                $chars[] = $char;
+                $this->letters[] = $char;
+            }
+            $this->freq[$key] = [
+               'chars' => $chars,
+               'freq' => $val,
+           ];
         }
     }
 
-    private function availableChars(array $unicodeRanges) {
-        $availableChars = 0;
-        foreach ($unicodeRanges as $unicodeRange) {
-            foreach ($unicodeRange->chars() as $char) {
-                if (preg_match('/(\p{L}|\p{N}|\p{P}|\p{S})/u', $char)) {
-                    $availableChars += 1;
-                }
-            }
-        }
+    public function letters()
+    {
+        return $this->letters;
+    }
 
-        return $availableChars;
+    public function randLetter()
+    {
+        shuffle($this->letters);
+
+        return $this->letters[0];
     }
 }

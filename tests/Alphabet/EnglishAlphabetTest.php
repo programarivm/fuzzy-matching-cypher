@@ -16,8 +16,6 @@ class EnglishAlphabetTest extends TestCase
 
 		$this->assertEquals(12.02, $letterFreq['e']);
 		$this->assertEquals(9.10, $letterFreq['t']);
-		$this->assertEquals(12.02, $letterFreq['e']);
-		$this->assertEquals(9.10, $letterFreq['t']);
 		$this->assertEquals(8.12, $letterFreq['a']);
 		$this->assertEquals(7.68, $letterFreq['o']);
 		$this->assertEquals(7.31, $letterFreq['i']);
