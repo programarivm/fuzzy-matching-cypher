@@ -82,6 +82,9 @@ Same plaintexts produce different ciphertexts.
 
 ```php
 <?php
+
+use FuzzyMatching\Match;
+
 ...
 
 $secret = unserialize(file_get_contents(__DIR__ . '/../.fuzzy-matching-secret'));
