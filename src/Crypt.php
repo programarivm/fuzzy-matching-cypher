@@ -39,21 +39,6 @@ class Crypt
 		return implode('', $array);
 	}
 
-	public function decrypt(string $str, array $stats)
-	{
-		$decoded = '';
-		foreach (Multibyte::strSplit($str) as $char) {
-			foreach ($stats as $key => $val) {
-				if (in_array($char, $val['chars'])) {
-					$decoded .= $key;
-					break;
-				}
-			}
-		}
-
-		return $decoded;
-	}
-
 	private function fillBackground(string $cipher)
 	{
 		$background = '';
