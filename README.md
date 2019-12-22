@@ -1,6 +1,6 @@
-## Fuzzy Matching Encrypted
+## Fuzzy Matching Cypher
 
-[![Build Status](https://travis-ci.org/programarivm/fuzzy-matching-encrypted.svg?branch=master)](https://travis-ci.org/programarivm/fuzzy-matching-encrypted)
+[![Build Status](https://travis-ci.org/programarivm/fuzzy-matching-cypher.svg?branch=master)](https://travis-ci.org/programarivm/fuzzy-matching-cypher)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![Fuzzy Matching Encrypted](/resources/square-dot.jpg)
 
@@ -10,7 +10,7 @@ Performs fuzzy string matchings on unintelligible strings encoded with random un
 
 ### Examples
 
-#### [`cli/example.php`](https://github.com/programarivm/fuzzy-matching-encrypted/blob/master/cli/example.php)
+#### [`cli/example.php`](https://github.com/programarivm/fuzzy-matching-cypher/blob/master/cli/example.php)
 
     php cli/example.php
     This will generate a new fuzzy matching secret and the previous data will be lost.
@@ -40,11 +40,11 @@ Performs fuzzy string matchings on unintelligible strings encoded with random un
 
 Via composer:
 
-    $ composer require programarivm/fuzzy-matching-encrypted
+    $ composer require programarivm/fuzzy-matching-cypher
 
-### Generate the Fuzzy Matching Secret
+### Generate the Secret
 
-A `Crypt` object is responsible for generating the `.fuzzy-matching-secret` -- a serialized object, arguably something similar to an encryption key -- which then is required to perform the string comparisons through a `Match` object.
+A `Crypt` object is responsible for generating the `.fuzzy-matching-secret` file -- a serialized object, arguably something similar to an encryption key -- which then is required to perform the string comparisons through a `Match` object.
 
 ```php
 <?php

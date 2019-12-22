@@ -1,5 +1,5 @@
 {
-  "name": "programarivm/fuzzy-matching-encrypted",
+  "name": "programarivm/fuzzy-matching-cypher",
   "description": "Performs fuzzy string matchings on unintelligible strings encoded with random unicode blocks.",
   "type": "library",
   "license": "GPL-3.0-only",
