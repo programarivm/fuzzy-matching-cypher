@@ -6,7 +6,7 @@
 
 Performs fuzzy string matchings on unintelligible strings encoded with random unicode blocks.
 
-> **Disclaimer**: So far this library is been written for learning purposes and might work for specific use cases only. It has not been tested against frequency analysis attacks. Please use it at your own risk.
+> **Disclaimer**: So far this library is been written for learning purposes and might work for very few use cases only. It has not been tested against frequency analysis attacks. Please use it at your own risk.
 
 ### Examples
 
@@ -44,7 +44,7 @@ Via composer:
 
 ### Generate the Fuzzy Matching Secret
 
-A `Crypt` object is responsible for generating the `.fuzzy-matching-secret` -- a serialized object, arguably something similar to an encryption key -- which is required to perform the string comparisons.
+A `Crypt` object is responsible for generating the `.fuzzy-matching-secret` -- a serialized object, arguably something similar to an encryption key -- which then is required to perform the string comparisons through a `Match` object.
 
 ```php
 <?php
