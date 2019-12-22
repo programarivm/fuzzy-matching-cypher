@@ -24,14 +24,6 @@ class MatchTest extends TestCase
 	 */
 	public function similarity_foo_bar()
 	{
-		$this->assertEquals(0, $this->match->similarity('foo', 'bar'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_foo_bar_encrypted()
-	{
 		$foo = $this->crypt->encrypt('foo');
 		$bar = $this->crypt->encrypt('bar');
 
@@ -42,14 +34,6 @@ class MatchTest extends TestCase
 	 * @test
 	 */
 	public function similarity_foo_far()
-	{
-		$this->assertEquals(0.33, $this->match->similarity('foo', 'far'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_foo_far_encrypted()
 	{
 		$foo = $this->crypt->encrypt('foo');
 		$far = $this->crypt->encrypt('far');
@@ -62,14 +46,6 @@ class MatchTest extends TestCase
 	 */
 	public function similarity_foo_for()
 	{
-		$this->assertEquals(0.67, $this->match->similarity('foo', 'for'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_foo_for_encrypted()
-	{
 		$foo = $this->crypt->encrypt('foo');
 		$for = $this->crypt->encrypt('for');
 
@@ -80,14 +56,6 @@ class MatchTest extends TestCase
 	 * @test
 	 */
 	public function similarity_foo_foo()
-	{
-		$this->assertEquals(1, $this->match->similarity('foo', 'foo'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_foo_foo_encrypted()
 	{
 		$foo1 = $this->crypt->encrypt('foo');
 		$foo2 = $this->crypt->encrypt('foo');
@@ -100,14 +68,6 @@ class MatchTest extends TestCase
 	 */
 	public function similarity_robert_susann()
 	{
-		$this->assertEquals(0, $this->match->similarity('robert', 'susann'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_robert_susann_encrypted()
-	{
 		$robert = $this->crypt->encrypt('robert');
 		$susann = $this->crypt->encrypt('susann');
 
@@ -118,14 +78,6 @@ class MatchTest extends TestCase
 	 * @test
 	 */
 	public function similarity_robert_rusann()
-	{
-		$this->assertEquals(0.17, $this->match->similarity('robert', 'rusann'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_robert_rusann_encrypted()
 	{
 		$robert = $this->crypt->encrypt('robert');
 		$rusann = $this->crypt->encrypt('rusann');
@@ -138,14 +90,6 @@ class MatchTest extends TestCase
 	 */
 	public function similarity_robert_rosann()
 	{
-		$this->assertEquals(0.33, $this->match->similarity('robert', 'rosann'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_robert_rosann_encrypted()
-	{
 		$robert = $this->crypt->encrypt('robert');
 		$rosann = $this->crypt->encrypt('rosann');
 
@@ -156,14 +100,6 @@ class MatchTest extends TestCase
 	 * @test
 	 */
 	public function similarity_robert_robann()
-	{
-		$this->assertEquals(0.5, $this->match->similarity('robert', 'robann'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_robert_robann_encrypted()
 	{
 		$robert = $this->crypt->encrypt('robert');
 		$robann = $this->crypt->encrypt('robann');
@@ -176,14 +112,6 @@ class MatchTest extends TestCase
 	 */
 	public function similarity_robert_robenn()
 	{
-		$this->assertEquals(0.67, $this->match->similarity('robert', 'robenn'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_robert_robenn_encrypted()
-	{
 		$robert = $this->crypt->encrypt('robert');
 		$robenn = $this->crypt->encrypt('robenn');
 
@@ -194,14 +122,6 @@ class MatchTest extends TestCase
 	 * @test
 	 */
 	public function similarity_robert_robern()
-	{
-		$this->assertEquals(0.83, $this->match->similarity('robert', 'robern'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_robert_robern_encrypted()
 	{
 		$robert = $this->crypt->encrypt('robert');
 		$robern = $this->crypt->encrypt('robern');
@@ -214,14 +134,6 @@ class MatchTest extends TestCase
 	 */
 	public function similarity_robert_robert()
 	{
-		$this->assertEquals(1, $this->match->similarity('robert', 'robert'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_robert_robert_encrypted()
-	{
 		$robert1 = $this->crypt->encrypt('robert');
 		$robert2 = $this->crypt->encrypt('robert');
 
@@ -231,31 +143,7 @@ class MatchTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function similarity_stjohnrd_stjohnroad()
-	{
-		$this->assertEquals(0.89, $this->match->similarity('stjohnrd', 'stjohnroad'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_stjohnrd_stjohnrd()
-	{
-		$this->assertEquals(1, $this->match->similarity('stjohnrd', 'stjohnrd'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_stjohnroad_stjohnroad()
-	{
-		$this->assertEquals(1, $this->match->similarity('stjohnroad', 'stjohnroad'));
-	}
-
-	/**
-	 * @test
-	 */
-	public function similarity_stjohnrd_stjohnroad_async_encrypted()
+	public function similarity_stjohnrd_stjohnroad_async()
 	{
 		$a = $this->crypt->encrypt('stjohnrd');
 		$b = $this->crypt->encrypt('stjohnrd');
@@ -269,7 +157,7 @@ class MatchTest extends TestCase
 	/**
 	 * @test
 	 */
-	public function similarity_stjohnrd_stjohnrd_async_encrypted()
+	public function similarity_stjohnrd_stjohnrd_async()
 	{
 		$a = $this->crypt->encrypt('stjohnrd');
 		$b = $this->crypt->encrypt('stjohnrd');
@@ -277,7 +165,7 @@ class MatchTest extends TestCase
 		$this->assertEquals(1, $this->match->similarity($a, $b));
 	}
 
-	public function similarity_stjohnroad_stjohnroad_async_encrypted()
+	public function similarity_stjohnroad_stjohnroad_async()
 	{
 		$a = $this->crypt->encrypt('stjohnroad');
 		$b = $this->crypt->encrypt('stjohnroad');
