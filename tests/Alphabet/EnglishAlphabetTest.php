@@ -2,7 +2,7 @@
 
 namespace FuzzyMatching\Tests\Alphabet;
 
-use FuzzyMatching\Alphabet\EnglishAlphabet;
+use FuzzyMatching\Alphabet\Real\EnglishAlphabet;
 use PHPUnit\Framework\TestCase;
 
 class EnglishAlphabetTest extends TestCase

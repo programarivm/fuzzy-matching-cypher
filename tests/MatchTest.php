@@ -4,19 +4,25 @@ namespace FuzzyMatching\Tests;
 
 use FuzzyMatching\Crypt;
 use FuzzyMatching\Match;
+use FuzzyMatching\Alphabet\FuzzyAlphabet;
+use FuzzyMatching\Alphabet\Real\EnglishAlphabet;
 use PHPUnit\Framework\TestCase;
 
 class MatchTest extends TestCase
 {
+	const FILE_SECRET = __DIR__ . '/.fuzzy-matching-secret';
+
 	private $crypt;
 
 	private $match;
 
 	public function __construct()
 	{
-		$fuzzyAlphabet = unserialize(file_get_contents(__DIR__ .'/.fuzzy-alphabet'));
+		$fuzzyAlphabet = new FuzzyAlphabet(new EnglishAlphabet);
 		$this->crypt = new Crypt($fuzzyAlphabet);
-		$this->match = new Match($this->crypt);
+		$this->crypt->writeSecret(self::FILE_SECRET); // generates a new .fuzzy-matching-secret file
+		$secret = unserialize(file_get_contents(self::FILE_SECRET));
+		$this->match = new Match($secret);
 	}
 
 	/**

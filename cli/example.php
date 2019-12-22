@@ -18,11 +18,12 @@ fclose($handle);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$english = new EnglishAlphabet;
-$fuzzyAlphabet = new FuzzyAlphabet($english);
+$fuzzyAlphabet = new FuzzyAlphabet(new EnglishAlphabet);
 $crypt = new Crypt($fuzzyAlphabet);
 
+$crypt->writeSecret(); // generates a new .fuzzy-matching-secret file
 $secret = unserialize(file_get_contents(__DIR__ . '/../.fuzzy-matching-secret'));
+
 $match = new Match($secret);
 
 $pairs = [
