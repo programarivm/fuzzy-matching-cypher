@@ -8,15 +8,15 @@ use PHPUnit\Framework\TestCase;
 
 class MatchTest extends TestCase
 {
-	private $match;
-
 	private $crypt;
+
+	private $match;
 
 	public function __construct()
 	{
 		$fuzzyAlphabet = unserialize(file_get_contents(__DIR__ .'/.fuzzy-alphabet'));
-		$this->match = new Match($fuzzyAlphabet);
 		$this->crypt = new Crypt($fuzzyAlphabet);
+		$this->match = new Match($this->crypt);
 	}
 
 	/**

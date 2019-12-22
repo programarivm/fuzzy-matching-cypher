@@ -16,6 +16,11 @@ class Crypt
 		$this->fuzzyAlphabet = $fuzzyAlphabet;
 	}
 
+	public function getFuzzyAlphabet()
+	{
+		return $this->fuzzyAlphabet;
+	}
+
 	public function encrypt(string $str)
 	{
 		if (mb_strlen($str) > Cypher::MAX_LENGTH_PLAINTEXT) {
@@ -34,11 +39,11 @@ class Crypt
 		return implode('', $array);
 	}
 
-	public function decrypt(string $str)
+	public function decrypt(string $str, array $stats)
 	{
 		$decoded = '';
 		foreach (Multibyte::strSplit($str) as $char) {
-			foreach ($this->stats as $key => $val) {
+			foreach ($stats as $key => $val) {
 				if (in_array($char, $val['chars'])) {
 					$decoded .= $key;
 					break;

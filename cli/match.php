@@ -10,7 +10,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $fuzzyAlphabet = unserialize(file_get_contents(__DIR__ . '/../.fuzzy-alphabet'));
 
 $crypt = new Crypt($fuzzyAlphabet);
-$match = new Match($fuzzyAlphabet);
+$match = new Match($crypt);
 
 $a = $crypt->encrypt($argv[1]);
 $b = $crypt->encrypt($argv[2]);

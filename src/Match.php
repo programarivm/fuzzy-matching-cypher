@@ -7,25 +7,24 @@ use FuzzyMatching\Alphabet\FuzzyAlphabet;
 
 class Match
 {
-	//private $fuzzyAlphabet;
+	private $crypt;
 
-	public function __construct(FuzzyAlphabet $fuzzyAlphabet)
+	public function __construct(Crypt $crypt)
 	{
-		$this->fuzzyAlphabet = $fuzzyAlphabet;
+		$this->crypt = $crypt;
 	}
 
 	public function similarity(string $str1, string $str2)
 	{
 		// remove the background alphabet
-		$letters = implode('', $this->fuzzyAlphabet->getBackground()->letters());
-		$str1 = preg_replace("/[$letters]/u", '', $str1);
-		$str2 = preg_replace("/[$letters]/u", '', $str2);
+		$str1 = implode('', $this->crypt->getFuzzyAlphabet()->foreground(Multibyte::strSplit($str1)));
+		$str2 = implode('', $this->crypt->getFuzzyAlphabet()->foreground(Multibyte::strSplit($str2)));
 
 		// decrypt the strings
 		// TODO remove decryption
-		$crypt = new Crypt;
-		$str1Decoded = $crypt->decrypt($str1);
-		$str2Decoded = $$crypt->decrypt($str2);
+		$stats = $this->crypt->getFuzzyAlphabet()->getForeground()->getStats();
+		$str1Decoded = $this->crypt->decrypt($str1, $stats);
+		$str2Decoded = $this->crypt->decrypt($str2, $stats);
 
 		// calculate matches
 		$matches = Multibyte::strMatches($str1Decoded, $str2Decoded);

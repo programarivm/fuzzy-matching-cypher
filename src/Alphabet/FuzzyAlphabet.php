@@ -34,4 +34,17 @@ class FuzzyAlphabet
 	{
 		return $this->background;
 	}
+
+	public function foreground(array $arr)
+	{
+		foreach ($this->getBackground()->letters() as $keyB => $valB) {
+			foreach ($arr as $keyA => $valA) {
+				if ($valB == $valA) {
+					unset($arr[$keyA]);
+				}
+			}
+		}
+
+		return $arr;
+	}
 }
