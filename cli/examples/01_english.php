@@ -21,7 +21,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 $fuzzyAlphabet = new FuzzyAlphabet(new EnglishAlphabet);
 $crypt = new Crypt($fuzzyAlphabet);
 
-$crypt->writeSecret(); // generates a new .fuzzy-matching-secret.ser file
+$crypt->writeSecret(); // writes a new .fuzzy-matching-secret.ser file
 
 $secret = unserialize(file_get_contents(Crypt::SECRET_FILEPATH));
 $match = new Match($secret);

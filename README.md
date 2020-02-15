@@ -70,7 +70,7 @@ Via composer:
 
 ### Generate the Secret
 
-A `Crypt` object is responsible for generating the `.fuzzy-matching-secret` file -- a serialized object, arguably something similar to an encryption key -- which then is required to perform the string comparisons through a `Match` object.
+A `Crypt` object is responsible for generating the `storage/.fuzzy-matching-secret.ser` file -- a serialized object, arguably something similar to an encryption key -- which then is required to perform the string comparisons through a `Match` object.
 
 ```php
 <?php
@@ -82,7 +82,7 @@ use FuzzyMatching\Alphabet\Real\EnglishAlphabet;
 $fuzzyAlphabet = new FuzzyAlphabet(new EnglishAlphabet);
 $crypt = new Crypt($fuzzyAlphabet);
 
-$crypt->writeSecret(); // generates a new .fuzzy-matching-secret file
+$crypt->writeSecret(); // writes a new .fuzzy-matching-secret.ser file
 ```
 
 Every time a `Crypt` object is instantiated, a new secret is created too. As its name implies the `.fuzzy-matching-secret` file must be kept secret.
@@ -109,14 +109,15 @@ Same plaintexts produce different ciphertexts.
 ```php
 <?php
 
+use FuzzyMatching\Crypt;
 use FuzzyMatching\Match;
-
-...
 
 $secret = unserialize(file_get_contents(Crypt::SECRET_FILEPATH));
 $match = new Match($secret);
 
-// of course the $a and $b values must be fetched first for comparison
+// the encrypted $a and $b values are fetched first for comparison
+
+...
 
 $similarity = $match->similarity($a, $b);
 ```
