@@ -38,7 +38,7 @@ Performs fuzzy string matchings on unintelligible strings encoded with random un
 
 #### [`cli/examples/02_numbers.php`](https://github.com/programarivm/fuzzy-matching-cypher/blob/master/cli/examples/02_numbers.php)
 
-    php cli/examples/02_numbers.php 
+    php cli/examples/02_numbers.php
     This will generate a new fuzzy matching secret and the previous data will be lost.
     Do you want to proceed? (y/n): y
     123 is ꪩ⟙䷂⤷🝂ᠤᄅ𝐒ẇ𐄛ꧯ𑘅🞣᯿റᘥ𐌇🙝ⱹᨍꤗ𑇳ⱨ”ꍾ𐦔𑆎ಱᜱ┾𐠁⿸𐌀⻒︕🜦徧⅂ⱨ⪃ꧬ🞁ꥬ𐭞ᯙ೯ꩨⴘጿꑦㇸ𑇄₵𝈐ท𐄘ꫛʢԁᜂⰵېꥸ𑒮
@@ -113,7 +113,7 @@ use FuzzyMatching\Match;
 
 ...
 
-$secret = unserialize(file_get_contents(__DIR__ . '/../.fuzzy-matching-secret'));
+$secret = unserialize(file_get_contents(Crypt::SECRET_FILEPATH));
 $match = new Match($secret);
 
 // of course the $a and $b values must be fetched first for comparison

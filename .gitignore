@@ -1,3 +1,3 @@
 /composer.lock
 /vendor/
-/.fuzzy-matching-secret
+/storage/.fuzzy-matching-secret

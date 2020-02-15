@@ -10,6 +10,8 @@ use UnicodeRanges\Utils\Multibyte;
 
 class Crypt
 {
+	const SECRET_FILEPATH = __DIR__ . '/../storage/.fuzzy-matching-secret.ser';
+
 	private $fuzzyAlphabet;
 
 	public function __construct(FuzzyAlphabet $fuzzyAlphabet)
@@ -71,7 +73,7 @@ class Crypt
             'background' => $background,
         ];
 
-		$filepath == null ? $filepath = __DIR__.'/../.fuzzy-matching-secret' : false;
+		$filepath == null ? $filepath = self::SECRET_FILEPATH : false;
 
         file_put_contents($filepath, serialize($secret));
 	}

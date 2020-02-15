@@ -10,8 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class MatchTest extends TestCase
 {
-	const FILE_SECRET = __DIR__ . '/.fuzzy-matching-secret';
-
 	private $crypt;
 
 	private $match;
@@ -20,8 +18,8 @@ class MatchTest extends TestCase
 	{
 		$fuzzyAlphabet = new FuzzyAlphabet(new EnglishAlphabet);
 		$this->crypt = new Crypt($fuzzyAlphabet);
-		$this->crypt->writeSecret(self::FILE_SECRET); // generates a new .fuzzy-matching-secret file
-		$secret = unserialize(file_get_contents(self::FILE_SECRET));
+		$this->crypt->writeSecret(); // generates a new .fuzzy-matching-secret.ser file
+		$secret = unserialize(file_get_contents(Crypt::SECRET_FILEPATH));
 		$this->match = new Match($secret);
 	}
 
